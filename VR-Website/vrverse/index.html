@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VRverse | Immersive Virtual Reality Experiences</title>
+  <meta name="description"
+    content="Experience next-generation virtual reality with cutting-edge technology and immersive environments">
+  <meta name="keywords" content="VR, virtual reality, metaverse, VR headsets, immersive technology">
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="VRverse | Next-Gen Virtual Reality">
+  <meta property="og:description" content="Step into the future with our immersive VR experiences">
+  <meta property="og:image" content="https://vrverse.com/images/social-preview.jpg">
+  <meta property="og:url" content="https://vrverse.com">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="VR-logo.png" type="image/png">
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #6e45e2;
+      --primary-light: #a682ff;
+      --primary-dark: #4d2bb5;
+      --secondary: #00c9c1;
+      --secondary-light: #5ce0d8;
+      --accent: #ff6b6b;
+      --accent-light: #ff8e8e;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --light-gray: #f0f2f5;
+      --medium-gray: #e1e4e8;
+      --dark-gray: #6a737d;
+      --dark: #0f0f15;
+      --darker: #0a0a0f;
+      --text: #1a1a2e;
+      --text-light: #4a5568;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --card-radius: 16px;
+      --section-padding: 8rem 5%;
+      --glow: 0 0 15px rgba(110, 69, 226, 0.3);
+      --section-gap: 6rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #1a1a2e;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    .section {
+      padding: var(--section-padding);
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 5rem;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    .section-title h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      margin: 1.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      gap: 0.8rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(110, 69, 226, 0.1);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-light);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header - Centered Layout with Logo in Middle, Navigation on Sides */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 2.3rem 1%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.98);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    header.scrolled {
+      padding: 2.3rem 5%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Logo container - positioned in center */
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      text-decoration: none;
+      z-index: 1002;
+    }
+
+    .logo img {
+      height: 100px;
+      transition: var(--transition);
+    }
+
+    .logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+    }
+
+    /* Navigation container - flex layout for left and right menus */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-left li,
+    .nav-right li {
+      list-style: none;
+    }
+
+    nav a {
+      color: #2d3748;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.3rem 0.5rem;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Icon button styles for cart & login */
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.95rem;
+      color: #2d3748;
+      transition: var(--transition);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .icon-btn i {
+      font-size: 1.1rem;
+    }
+
+    .icon-btn:hover {
+      color: var(--primary);
+    }
+
+    /* Separate class for nav-right items to maintain consistent spacing */
+    .nav-right-item {
+      margin-left: 0.25rem;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #1a1a2e;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1002;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .mobile-menu-btn:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section with Slideshow */
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      background: linear-gradient(135deg, #ffffff, #f5f5f5);
+    }
+
+    /* Floating Logo Animation - moves from top to bottom */
+    .hero-logo-animation {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: floatDownLogo 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatDownLogo {
+      0% {
+        top: -20%;
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8);
+      }
+
+      40% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.05);
+      }
+
+      100% {
+        top: 25%;
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+    }
+
+    .hero-logo-animation img {
+      height: 180px;
+      width: auto;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    }
+
+    .hero-logo-animation span {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 10px rgba(110, 69, 226, 0.3);
+    }
+
+    /* Search Bar Styles - matching the pic design */
+    .hero-search-bar {
+      position: relative;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-radius: 60px;
+      width: 90%;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.3);
+      animation: fadeInUpSearch 0.9s ease-out 0.4s forwards;
+      opacity: 0;
+      transform: translateY(30px);
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0.5rem 0.5rem 1.8rem;
+      gap: 0.5rem;
+      margin-top: 100px;
+    }
+
+    @keyframes fadeInUpSearch {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-search-bar i {
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .hero-search-bar input {
+      flex: 1;
+      padding: 1rem 0;
+      border: none;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      background: transparent;
+      color: #1a1a2e;
+    }
+
+    .hero-search-bar input::placeholder {
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    .hero-search-bar button {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      white-space: nowrap;
+    }
+
+    .hero-search-bar button:hover {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      transform: scale(1.02);
+      cursor: pointer;
+    }
+
+    /* Slideshow styles */
+    .slideshow-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0);
+    }
+
+    .slide-1 {
+      background-image: url('sli-1.png');
+    }
+
+    .slide-2 {
+      background-image: url('sli-3.png');
+    }
+
+    .slide-3 {
+      background-image: url('sli-4.png');
+    }
+
+    .slide-4 {
+      background-image: url('sli-2.png');
+    }
+
+    .slide-dots {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 3;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      width: 30px;
+      border-radius: 6px;
+    }
+
+    .dot:hover {
+      background: var(--primary-light);
+    }
+
+    /* About Section - Alternating Zig-Zag Layout (Smaller Version) */
+    .about {
+      background: linear-gradient(135deg, #ffffff 0%, #faf9ff 100%);
+      padding: 3rem 5% 4rem;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #6e45e2, #00c9c1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: #5a6a85;
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 0.9rem;
+    }
+
+    /* Alternating Rows - Zig Zag */
+    .about-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding: 0.5rem 0;
+    }
+
+    .about-row:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Zig-Zag: Row 2 - Text Left, Image Right */
+    .reverse {
+      direction: ltr;
+    }
+
+    /* Ensure text and image stay in correct order for reverse */
+    .reverse .about-text-wrapper {
+      order: 1;
+    }
+
+    .reverse .about-image-wrapper {
+      order: 2;
+    }
+
+    /* Image Styling - Square Shape with Smaller Height */
+    .about-image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-image-card {
+      position: relative;
+      width: 50%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .about-image-card:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 25px 40px -15px rgba(110, 69, 226, 0.2);
+    }
+
+    .about-image-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .about-image-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .image-overlay-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(110, 69, 226, 0.1), rgba(0, 201, 193, 0.1));
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .about-image-card:hover .image-overlay-glow {
+      opacity: 1;
+    }
+
+    /* Text Styling */
+    .about-text-wrapper {
+      padding: 0.5rem;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: linear-gradient(120deg, #6e45e215, #00c9c115);
+      color: #6e45e2;
+      font-weight: 600;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .about-text-wrapper h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: #0f0f1a;
+      font-family: 'Orbitron', sans-serif;
+      line-height: 1.2;
+    }
+
+    .about-text-wrapper p {
+      color: #4a5568;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 0;
+    }
+
+    .feature-item-mini {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f1f4f9;
+      padding: 0.3rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #2d3748;
+    }
+
+    .feature-item-mini i {
+      color: #6e45e2;
+      font-size: 0.75rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .about-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .reverse .about-text-wrapper,
+      .reverse .about-image-wrapper {
+        order: unset;
+      }
+
+      .about-text-wrapper {
+        order: 1;
+      }
+
+      .about-image-wrapper {
+        order: 2;
+      }
+
+      .feature-list {
+        justify-content: center;
+      }
+
+      .about-text-wrapper h3 {
+        font-size: 1.3rem;
+      }
+
+      .about-image-card {
+        width: 70%;
+      }
+
+      .about-image-card img {
+        height: 150px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .about {
+        padding: 2rem 5% 3rem;
+      }
+
+      .section-title h2 {
+        font-size: 1.4rem;
+      }
+
+      .about-text-wrapper h3 {
+        font-size: 1.2rem;
+      }
+
+      .about-image-card {
+        width: 85%;
+      }
+
+      .about-image-card img {
+        height: 130px;
+      }
+    }
+
+    /* Animation */
+    [data-aos] {
+      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* VR Video Section */
+    .vr-video {
+      background: #f3f7fb;
+      text-align: center;
+    }
+
+    .vr-video-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .vr-video-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(110, 69, 226, 0.2), rgba(0, 201, 193, 0.2));
+      z-index: 1;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .vr-video-container:hover::before {
+      opacity: 1;
+    }
+
+    .vr-video-container video {
+      width: 100%;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .vr-video-container:hover video {
+      transform: scale(1.02);
+    }
+
+    .vr-video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .vr-video-play-btn {
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .vr-video-play-btn:hover {
+      background: var(--primary);
+      transform: scale(1.1);
+    }
+
+    /* Stats Section */
+    .stats {
+      background: linear-gradient(135deg, #e9d5ff, #bfdbfe);
+      text-align: center;
+      padding: 5rem 5%;
+    }
+
+    .charts-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .chart-card {
+      background: none;
+      border-radius: none;
+      padding: 1.5rem;
+      transition: transform 0.4s ease;
+    }
+
+    .chart-card.animate-bar .chart-wrapper canvas {
+      animation: barZoomIn 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    @keyframes barZoomIn {
+      0% {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .chart-card.animate-pie .chart-wrapper canvas {
+      animation: pieRotateIn 0.8s ease-out;
+    }
+
+    @keyframes pieRotateIn {
+      0% {
+        transform: rotate(0deg) scale(0.5);
+        opacity: 0;
+      }
+
+      50% {
+        transform: rotate(180deg) scale(1.1);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .chart-card.animate-line .chart-wrapper canvas {
+      animation: lineZoomIn 0.7s ease-out;
+    }
+
+    @keyframes lineZoomIn {
+      0% {
+        transform: scaleX(0.3) scaleY(0.8);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scaleX(1) scaleY(1);
+        opacity: 1;
+      }
+    }
+
+    .chart-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .chart-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      height: 240px;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    canvas {
+      max-height: 220px;
+      width: 100%;
+    }
+
+    .chart-stats {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      background: rgba(110, 69, 226, 0.1);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--primary);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #ffffff;
+      padding: 4rem 5% 3rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      text-decoration: none;
+    }
+
+    .footer-logo img {
+      height: 100px;
+    }
+
+    .footer-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-about p {
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+      color: #1a1a2e;
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-links h3::after,
+    .footer-contact h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      color: #4a5568;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .footer-contact p,
+    .footer-contact li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+      color: #4a5568;
+      font-size: 0.9rem;
+    }
+
+    .footer-contact i {
+      color: var(--primary);
+      width: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: var(--primary);
+      transition: var(--transition);
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .social-icon .tooltip {
+      position: absolute;
+      top: -35px;
+      font-size: 0.7rem;
+      background: #1a1a2e;
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 25px;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .social-icon:hover .tooltip {
+      opacity: 1;
+      top: -42px;
+    }
+
+    .social-icon.facebook:hover {
+      background: #3b5998;
+      color: white;
+    }
+
+    .social-icon.twitter:hover {
+      background: #1da1f2;
+      color: white;
+    }
+
+    .social-icon.instagram:hover {
+      background: #e1306c;
+      color: white;
+    }
+
+    .social-icon.youtube:hover {
+      background: #ff0000;
+      color: white;
+    }
+
+    .social-icon.linkedin:hover {
+      background: #0077b5;
+      color: white;
+    }
+
+    .footer-contact .newsletter-form {
+      display: flex;
+      margin-top: 1rem;
+      max-width: 100%;
+    }
+
+    .footer-contact .newsletter-form input {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+      border-radius: 50px 0 0 50px;
+      padding: 0.6rem 1rem;
+      flex: 1;
+      font-size: 0.85rem;
+    }
+
+    .footer-contact .newsletter-form button {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 0 50px 50px 0;
+      color: white;
+      padding: 0 1.2rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #e2e8f0;
+      color: #64748b;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    /* Footer Responsive */
+    @media (max-width: 992px) {
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      footer {
+        padding: 3rem 5% 2rem;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+      box-shadow: var(--glow);
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+    }
+
+    @media (max-width: 992px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-image {
+        height: 350px;
+        order: -1;
+      }
+
+      .section-title h2 {
+        font-size: 2.4rem;
+      }
+
+      .charts-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 1.2rem;
+        z-index: 1005;
+      }
+
+      .logo {
+        position: relative;
+        left: 0;
+        transform: none;
+        margin: 0 auto;
+      }
+
+      header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 350px;
+        height: 100vh;
+        background: #ffffff;
+        padding: 6rem 2rem 2rem;
+        transition: var(--transition);
+        z-index: 1001;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        display: block;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      .nav-left,
+      .nav-right {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .hero {
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+        height: 100vh;
+      }
+
+      .hero-search-bar {
+        width: 90%;
+        padding: 0.3rem 0.3rem 0.3rem 1rem;
+      }
+
+      .hero-search-bar button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+
+      .hero-logo-animation span {
+        font-size: 1.4rem;
+      }
+
+      .hero-logo-animation img {
+        height: 65px;
+      }
+    }
+
+
+    .stats-footer-divider {
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, transparent, #6e45e2, #00c9c1, #ff6b6b, transparent);
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+
+    .stats-footer-divider::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        left: -100%;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    /* Cart Icon Wrapper - Fix for alignment */
+    .cart-icon-wrapper {
+      position: relative;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem 0.5rem;
+      color: #2d3748;
+      transition: var(--transition);
+    }
+
+    .cart-icon-wrapper i {
+      font-size: 1.1rem;
+    }
+
+    .cart-icon-wrapper:hover {
+      color: var(--primary);
+    }
+
+    /* Cart Badge - Positioned on top-right of icon */
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--accent, #ff6b6b);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.1rem 0.4rem;
+      border-radius: 50%;
+      min-width: 18px;
+      text-align: center;
+      display: none;
+      line-height: 1.2;
+    }
+
+    .cart-badge.show {
+      display: block;
+    }
+
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 380px;
+      max-width: 90vw;
+      height: 100vh;
+      background: white;
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+      z-index: 1100;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .cart-sidebar.open {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e1e4e8;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .cart-header h3 {
+      font-size: 1.4rem;
+    }
+
+    .close-cart {
+      background: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: #6a737d;
+    }
+
+    .cart-empty-msg {
+      text-align: center;
+      color: gray;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0f2f5;
+    }
+
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      background: #f0f2f5;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-item-img i {
+      font-size: 2rem;
+      color: #6e45e2;
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .cart-item-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .cart-item-price {
+      color: #6e45e2;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .cart-item-remove {
+      color: #ff6b6b;
+      cursor: pointer;
+      font-size: 0.8rem;
+      background: none;
+      border: none;
+    }
+
+    .cart-qty-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .cart-qty-btn {
+      background: #6e45e2;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cart-total {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid #e1e4e8;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .checkout-btn {
+      margin-top: 1rem;
+      background: #6e45e2;
+      color: white;
+      padding: 0.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+    }
+
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1050;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cart-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+    /* Example: Show scrollbar only on hover */
+    .cart-items::-webkit-scrollbar {
+      display: block;
+      width: 5px;
+    }
+
+    .cart-items::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+
+    .cart-items:hover::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .cart-qty-minus,
+    .cart-qty-plus {
+      background: #6e45e2;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">
+    <div class="logo">
+      <img src="VR-logo.png" alt="VR Logo">
+      <span>VRverse</span>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+    <nav id="mainNav">
+      <ul class="nav-left">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About VR</a></li>
+        <li><a href="shop.html">Shop</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li class="cart-icon-wrapper" id="cartIcon">
+          <i class="fas fa-shopping-cart"></i> Cart
+          <span class="cart-badge" id="cartBadge">0</span>
+        </li>
+        <li class="nav-right-item"><a title="Login" href="login.html"><i class="fas fa-user-circle"></i> Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button title="Close Cart" class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItemsContainer">
+      <p>Cart is empty</p>
+    </div>
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cartTotalPrice">৳0.00</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+  </div>
+
+  <!-- HERO SECTION with Logo Animation & Search Bar (like the pic) -->
+  <section class="hero" id="home">
+    <div class="slideshow-container">
+      <div class="slide slide-1 active"></div>
+      <div class="slide slide-2"></div>
+      <div class="slide slide-3"></div>
+      <div class="slide slide-4"></div>
+    </div>
+    <!-- Animated Logo that drops from top to bottom -->
+    <div class="hero-logo-animation">
+      <img src="VR-logo-1.png" alt="VR Logo">
+    </div>
+    <!-- Search Bar matching the pic design -->
+    <div class="hero-search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search for VR games, devices, or experiences..." id="heroSearchInput">
+      <button id="heroSearchBtn">Search</button>
+    </div>
+    <div class="slide-dots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+      <span class="dot" data-slide="3"></span>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION (unchanged) -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>About Virtual Reality</h2>
+        <p>Discover how VR Nexus is transforming digital experiences through cutting-edge immersion</p>
+      </div>
+
+      <!-- Row 1: Image Left | Text Right -->
+      <div class="about-row" data-aos="fade-up">
+        <div class="about-image-wrapper">
+          <div class="about-image-card">
+            <img
+              src="https://images.unsplash.com/photo-1552831388-6a0b3575b32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80"
+              alt="VR Headset Experience">
+            <div class="image-overlay-glow"></div>
+          </div>
+        </div>
+        <div class="about-text-wrapper">
+          <span class="section-badge">Immersive Technology</span>
+          <h3>Step Into Another World</h3>
+          <p>Crystal-clear 4K visuals, spatial audio, and zero motion sickness. Pure immersion.</p>
+          <div class="feature-list">
+            <div class="feature-item-mini"><i class="fas fa-check-circle"></i> 4K+ per eye</div>
+            <div class="feature-item-mini"><i class="fas fa-check-circle"></i> 120° FOV</div>
+            <div class="feature-item-mini"><i class="fas fa-check-circle"></i> Sub-10ms latency</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Text Left | Image Right (Zig-Zag) -->
+      <div class="about-row reverse" data-aos="fade-up">
+        <div class="about-text-wrapper">
+          <span class="section-badge">Neural Integration</span>
+          <h3>Control With Your Mind</h3>
+          <p>Optional neural interface. Move objects, navigate menus, and communicate using thought alone.</p>
+          <div class="feature-list">
+            <div class="feature-item-mini"><i class="fas fa-check-circle"></i> Non-invasive</div>
+            <div class="feature-item-mini"><i class="fas fa-check-circle"></i> Real-time</div>
+            <div class="feature-item-mini"><i class="fas fa-check-circle"></i> 95% accuracy</div>
+          </div>
+        </div>
+        <div class="about-image-wrapper">
+          <div class="about-image-card">
+            <img
+              src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+              alt="Neural Interface VR">
+            <div class="image-overlay-glow"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Image Left | Text Right -->
+      <div class="about-row" data-aos="fade-up">
+        <div class="about-image-wrapper">
+          <div class="about-image-card">
+            <img
+              src="https://images.unsplash.com/photo-1582139329536-e7284fece509?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+              alt="Social VR Experience">
+            <div class="image-overlay-glow"></div>
+          </div>
+        </div>
+        <div class="about-text-wrapper">
+          <span class="section-badge">Social Metaverse</span>
+          <h3>Connect Globally</h3>
+          <p>Join millions in persistent virtual worlds. Concerts, offices, gaming — all in one place.</p>
+          <div class="feature-list">
+            <div class="feature-item-mini"><i class="fas fa-check-circle"></i> Cross-platform</div>
+            <div class="feature-item-mini"><i class="fas fa-check-circle"></i> Voice & gestures</div>
+            <div class="feature-item-mini"><i class="fas fa-check-circle"></i> Custom avatars</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VR VIDEO SECTION (unchanged) -->
+  <section class="section vr-video" id="technology">
+    <div class="container">
+      <div class="section-title">
+        <h2>Experience VR</h2>
+        <p>Watch our latest VR experience in action.</p>
+      </div>
+      <div class="vr-video-container"><video id="vrVideo" loop muted>
+          <source src="VR.mp4" type="video/mp4">
+        </video>
+        <div class="vr-video-overlay">
+          <div class="vr-video-play-btn" id="playBtn"><i class="fas fa-play"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION (unchanged) -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>VR Industry Insights</h2>
+        <p>Discover the impressive growth and adoption of Virtual Reality technology worldwide</p>
+      </div>
+      <div class="charts-container">
+        <div class="chart-card" data-aos="fade-up" data-aos-delay="100" id="barChartCard">
+          <h3><i class="fas fa-chart-line"></i> Market Growth</h3>
+          <div class="chart-wrapper"><canvas id="barChart"></canvas></div>
+          <div class="chart-stats"><span class="stat-badge"><i class="fas fa-arrow-up"></i> +245% (2020-2025)</span>
+          </div>
+        </div>
+        <div class="chart-card" data-aos="fade-up" data-aos-delay="200" id="pieChartCard">
+          <h3><i class="fas fa-chart-pie"></i> Adoption by Sector</h3>
+          <div class="chart-wrapper"><canvas id="pieChart"></canvas></div>
+          <div class="chart-stats"><span class="stat-badge"><i class="fas fa-gamepad"></i> Gaming: 38%</span><span
+              class="stat-badge"><i class="fas fa-graduation-cap"></i> Education: 28%</span></div>
+        </div>
+        <div class="chart-card" data-aos="fade-up" data-aos-delay="300" id="lineChartCard">
+          <h3><i class="fas fa-chart-line"></i> User Growth</h3>
+          <div class="chart-wrapper"><canvas id="lineChart"></canvas></div>
+          <div class="chart-stats"><span class="stat-badge"><i class="fas fa-users"></i> 10M+ Active Users</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="stats-footer-divider"></div>
+
+  <!-- FOOTER (unchanged) -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <a href="index.html" class="footer-logo">
+            <img src="VR-logo.png" alt="VRverse Logo">
+            <span>VRverse</span>
+          </a>
+          <p>Delivering transformative virtual reality experiences that inspire, educate, and empower.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i><span
+                class="tooltip">Facebook</span></a>
+            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i><span
+                class="tooltip">Twitter</span></a>
+            <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i><span
+                class="tooltip">Instagram</span></a>
+            <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i><span
+                class="tooltip">YouTube</span></a>
+            <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i><span
+                class="tooltip">LinkedIn</span></a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-chevron-right"></i> About VR</a></li>
+            <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
+            <li><a href="review.html"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- NEW: Customer Service Section -->
+        <div class="footer-links">
+          <h3>Customer Service</h3>
+          <ul>
+            <li><a href="policy.html#privacy"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+            <li><a href="policy.html#terms"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
+            <li><a href="policy.html#return"><i class="fas fa-chevron-right"></i> Return Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> 123 VR Road, Banani, Dhaka 1213</li>
+            <li><i class="fas fa-phone-alt"></i> +880 1712 345678</li>
+            <li><i class="fas fa-envelope"></i> info@vrverse.com</li>
+            <li><i class="fas fa-clock"></i> Open 10AM-8PM (Sat-Thu)</li>
+          </ul>
+          <h3>Newsletter</h3>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <button type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 VR Nexus. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Shared JavaScript Files (Centralized System) -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+
+  <!-- Page Specific Script for Homepage -->
+  <script>
+    // Initialize AOS
+    AOS.init({ duration: 800, once: true, offset: 100 });
+
+    // ========== SLIDESHOW FUNCTIONALITY ==========
+    let slideInterval;
+
+    function initSlideshow() {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      const totalSlides = slides.length;
+
+      if (totalSlides === 0) return;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % totalSlides);
+      }
+
+      if (slideInterval) clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          clearInterval(slideInterval);
+          showSlide(index);
+          slideInterval = setInterval(nextSlide, 5000);
+        });
+      });
+
+      showSlide(0);
+    }
+
+    initSlideshow();
+
+    // ========== VR VIDEO PLAYER ==========
+    const vrVideo = document.getElementById('vrVideo');
+    const playBtn = document.getElementById('playBtn');
+    const containerOverlay = document.querySelector('.vr-video-container');
+
+    if (playBtn && vrVideo) {
+      playBtn.addEventListener('click', () => {
+        if (vrVideo.paused) {
+          vrVideo.play();
+          playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+          if (containerOverlay) {
+            const overlay = containerOverlay.querySelector('.vr-video-overlay');
+            if (overlay) {
+              overlay.style.opacity = '0';
+              setTimeout(() => overlay.style.display = 'none', 300);
+            }
+          }
+        } else {
+          vrVideo.pause();
+          playBtn.innerHTML = '<i class="fas fa-play"></i>';
+          if (containerOverlay) {
+            const overlay = containerOverlay.querySelector('.vr-video-overlay');
+            if (overlay) {
+              overlay.style.display = 'flex';
+              setTimeout(() => overlay.style.opacity = '1', 10);
+            }
+          }
+        }
+      });
+
+      vrVideo.addEventListener('ended', () => {
+        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        if (containerOverlay) {
+          const overlay = containerOverlay.querySelector('.vr-video-overlay');
+          if (overlay) {
+            overlay.style.display = 'flex';
+            overlay.style.opacity = '1';
+          }
+        }
+      });
+    }
+
+    // ========== CHARTS INITIALIZATION ==========
+    // Bar Chart - Market Growth
+    const barCtx = document.getElementById('barChart')?.getContext('2d');
+    if (barCtx) {
+      new Chart(barCtx, {
+        type: 'bar',
+        data: {
+          labels: ['2021', '2022', '2023', '2024', '2025'],
+          datasets: [{
+            label: 'Market Size (Billion USD)',
+            data: [28, 42, 58, 78, 96],
+            backgroundColor: ['#6e45e2', '#00c9c1', '#ff6b6b', '#a682ff', '#5ce0d8'],
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { position: 'top', labels: { font: { size: 10 } } }
+          },
+          scales: {
+            y: { beginAtZero: true, ticks: { callback: (v) => '$' + v + 'B' } }
+          }
+        }
+      });
+    }
+
+    // Pie Chart - Adoption by Sector
+    const pieCtx = document.getElementById('pieChart')?.getContext('2d');
+    if (pieCtx) {
+      new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+          labels: ['Gaming', 'Education', 'Enterprise', 'Healthcare', 'Real Estate'],
+          datasets: [{
+            data: [38, 28, 22, 7, 5],
+            backgroundColor: ['#6e45e2', '#00c9c1', '#ff6b6b', '#a682ff', '#ffa502']
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { position: 'bottom', labels: { font: { size: 9 } } }
+          }
+        }
+      });
+    }
+
+    // Line Chart - User Growth
+    const lineCtx = document.getElementById('lineChart')?.getContext('2d');
+    if (lineCtx) {
+      new Chart(lineCtx, {
+        type: 'line',
+        data: {
+          labels: ['2021', '2022', '2023', '2024', '2025'],
+          datasets: [{
+            label: 'Active Users (Millions)',
+            data: [2.5, 4.2, 6.8, 9.5, 12.3],
+            borderColor: '#6e45e2',
+            backgroundColor: 'rgba(110, 69, 226, 0.1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#00c9c1',
+            pointRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: { legend: { position: 'top' } },
+          scales: {
+            y: { beginAtZero: true, ticks: { callback: (v) => v + 'M' } }
+          }
+        }
+      });
+    }
+
+    // ========== CHART SCROLL ANIMATIONS ==========
+    const barChartCard = document.getElementById('barChartCard');
+    const pieChartCard = document.getElementById('pieChartCard');
+    const lineChartCard = document.getElementById('lineChartCard');
+    let barAnimated = false, pieAnimated = false, lineAnimated = false;
+
+    function resetAndAnimateOnScroll() {
+      if (barChartCard) {
+        const rect = barChartCard.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
+          if (!barAnimated) {
+            barChartCard.classList.add('animate-bar');
+            barAnimated = true;
+            setTimeout(() => barChartCard.classList.remove('animate-bar'), 800);
+          }
+        } else {
+          barAnimated = false;
+        }
+      }
+
+      if (pieChartCard) {
+        const rect = pieChartCard.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
+          if (!pieAnimated) {
+            pieChartCard.classList.add('animate-pie');
+            pieAnimated = true;
+            setTimeout(() => pieChartCard.classList.remove('animate-pie'), 900);
+          }
+        } else {
+          pieAnimated = false;
+        }
+      }
+
+      if (lineChartCard) {
+        const rect = lineChartCard.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
+          if (!lineAnimated) {
+            lineChartCard.classList.add('animate-line');
+            lineAnimated = true;
+            setTimeout(() => lineChartCard.classList.remove('animate-line'), 800);
+          }
+        } else {
+          lineAnimated = false;
+        }
+      }
+    }
+
+    window.addEventListener('scroll', resetAndAnimateOnScroll);
+    setTimeout(resetAndAnimateOnScroll, 500);
+
+
+
+    // ========== SEARCH FUNCTIONALITY (UPDATED) ==========
+    const searchBtn = document.getElementById('heroSearchBtn');
+    const searchInput = document.getElementById('heroSearchInput');
+
+    async function performSearch() {
+      const term = searchInput?.value.trim();
+      if (!term) {
+        alert('Please enter a search term');
+        return;
+      }
+
+      // Load products if not already loaded
+      if (typeof products === 'undefined') {
+        await loadProductsScript();
+      }
+
+      // Search for products
+      const results = searchProducts(term);
+
+      if (results.length > 0) {
+        // Save search results to localStorage
+        localStorage.setItem('searchResults', JSON.stringify(results));
+        localStorage.setItem('searchQuery', term);
+
+        // Show results popup with product list
+        showSearchResultsPopup(results, term);
+      } else {
+        alert(`No products found for "${term}"`);
+      }
+    }
+
+    function loadProductsScript() {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'js/products.js';
+        script.onload = () => resolve();
+        script.onerror = () => {
+          // Fallback products if file doesn't exist
+          window.products = [
+            { id: 1, name: "VR Headset Pro", category: "Headset", price: 29999, slug: "vr-headset-pro" },
+            { id: 2, name: "Beat Saber", category: "Game", price: 2999, slug: "beat-saber" },
+            { id: 3, name: "VR Controllers", category: "Accessories", price: 8999, slug: "vr-controllers" }
+          ];
+          window.searchProducts = function (query) {
+            const searchTerm = query.toLowerCase().trim();
+            return window.products.filter(p =>
+              p.name.toLowerCase().includes(searchTerm) ||
+              p.category.toLowerCase().includes(searchTerm)
+            );
+          };
+          resolve();
+        };
+        document.head.appendChild(script);
+      });
+    }
+
+    function showSearchResultsPopup(results, searchTerm) {
+      // Remove existing popup
+      const existingPopup = document.getElementById('searchResultsPopup');
+      if (existingPopup) existingPopup.remove();
+
+      const popup = document.createElement('div');
+      popup.id = 'searchResultsPopup';
+      popup.style.cssText = `
+        position: fixed;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+        max-width: 90%;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        z-index: 10000;
+        max-height: 500px;
+        overflow-y: auto;
+        animation: slideDown 0.3s ease;
+    `;
+
+      let html = `
+        <style>
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateX(-50%) translateY(-30px); }
+                to { opacity: 1; transform: translateX(-50%) translateY(0); }
+            }
+            .search-result-item {
+                padding: 15px;
+                border-bottom: 1px solid #f0f0f0;
+                cursor: pointer;
+                transition: background 0.2s;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .search-result-item:hover {
+                background: #f8f9fa;
+            }
+            .product-info h4 {
+                margin: 0 0 5px 0;
+                color: #1a1a2e;
+            }
+            .product-info p {
+                margin: 0;
+                font-size: 12px;
+                color: #888;
+            }
+            .product-price {
+                color: #6e45e2;
+                font-weight: bold;
+                font-size: 18px;
+            }
+        </style>
+        <div style="position: sticky; top: 0; background: white; padding: 15px; border-bottom: 1px solid #e0e0e0; border-radius: 16px 16px 0 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="color: #6e45e2; font-size: 16px;">🔍 Search Results for "${searchTerm}"</strong>
+                <button onclick="this.closest('#searchResultsPopup').remove()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #999;">&times;</button>
+            </div>
+            <div style="font-size: 13px; color: #666; margin-top: 5px;">Found ${results.length} product(s) - Click any product to view in shop</div>
+        </div>
+    `;
+
+      results.forEach(product => {
+        html += `
+            <div class="search-result-item" onclick="goToProductPage('${product.slug || product.name.toLowerCase().replace(/ /g, '-')}', ${product.id})">
+                <div class="product-info">
+                    <h4>${product.name}</h4>
+                    <p>${product.category}</p>
+                </div>
+                <div class="product-price">৳${product.price.toLocaleString()}</div>
+            </div>
+        `;
+      });
+
+      html += `</div>`;
+      popup.innerHTML = html;
+      document.body.appendChild(popup);
+
+      // Close when clicking outside
+      setTimeout(() => {
+        document.addEventListener('click', function closePopup(e) {
+          if (!popup.contains(e.target) && e.target !== searchBtn && e.target !== searchInput) {
+            popup.remove();
+            document.removeEventListener('click', closePopup);
+          }
+        });
+      }, 100);
+    }
+
+    function goToProductPage(slug, productId) {
+      // Store which product to highlight
+      localStorage.setItem('highlightProductId', productId);
+      localStorage.setItem('highlightProductSlug', slug);
+
+      // Redirect to shop page
+      window.location.href = `shop.html?highlight=${productId}`;
+    }
+
+    // Add CSS animation
+    const style = document.createElement('style');
+    style.textContent = `
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateX(-50%) translateY(-30px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+`;
+    document.head.appendChild(style);
+
+    // Event listeners
+    if (searchBtn) {
+      searchBtn.addEventListener('click', performSearch);
+    }
+    if (searchInput) {
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') performSearch();
+      });
+    }
+    // ========== SMOOTH ENTRANCE ANIMATION FOR ABOUT ROWS ==========
+    (function () {
+      const rows = document.querySelectorAll('.about-row');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      rows.forEach(row => {
+        row.style.opacity = '0';
+        row.style.transform = 'translateY(20px)';
+        row.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(row);
+      });
+
+      setTimeout(() => {
+        rows.forEach(row => {
+          if (row.getBoundingClientRect().top < window.innerHeight - 100) {
+            row.style.opacity = '1';
+            row.style.transform = 'translateY(0)';
+          }
+        });
+      }, 300);
+    })();
+
+
+  </script>
+  <script src="auth.js"></script>
+</body>
+
+</html>

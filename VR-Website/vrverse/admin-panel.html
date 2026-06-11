@@ -1,0 +1,3286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VRverse Admin Panel</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* ── Reset & Base ── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f4f6fb;
+        color: #1a1a2e;
+        min-height: 100vh;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      input,
+      select,
+      textarea,
+      button {
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* ══════════════════════════════════════════
+   LOGIN PAGE
+══════════════════════════════════════════ */
+      #loginPage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #ffffff 0%, #f0eeff 100%);
+        overflow: hidden;
+        position: relative;
+      }
+      .bg-orbs {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.25;
+        animation: floatOrb 8s ease-in-out infinite;
+      }
+      .orb1 {
+        width: 400px;
+        height: 400px;
+        background: #6e45e2;
+        top: -100px;
+        left: -100px;
+        animation-delay: 0s;
+      }
+      .orb2 {
+        width: 300px;
+        height: 300px;
+        background: #00c9c1;
+        bottom: -80px;
+        right: -80px;
+        animation-delay: 3s;
+      }
+      .orb3 {
+        width: 200px;
+        height: 200px;
+        background: #ff6b6b;
+        top: 50%;
+        left: 60%;
+        animation-delay: 5s;
+      }
+      @keyframes floatOrb {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-30px) scale(1.05);
+        }
+      }
+      .login-card {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 28px;
+        padding: 2.5rem;
+        width: 100%;
+        max-width: 420px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+      }
+      .login-logo {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .login-logo .icon {
+        width: 70px;
+        height: 70px;
+        background: none;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 1.8rem;
+        color: #fff;
+        box-shadow: 0 8px 25px rgba(110, 69, 226, 0.4);
+        overflow: hidden;
+      }
+
+      .login-logo .icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+      }
+      .login-logo h1 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.4rem;
+        background: linear-gradient(135deg, #6e45e2, #00c9c1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .login-logo p {
+        color: rgba(26, 26, 46, 0.6);
+        font-size: 0.82rem;
+        margin-top: 0.3rem;
+      }
+      .login-form-group {
+        margin-bottom: 1.2rem;
+      }
+      .login-form-group label {
+        display: block;
+        color: rgba(26, 26, 46, 0.7);
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.3px;
+      }
+      .input-wrap {
+        position: relative;
+      }
+      .input-wrap i.icon-left {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(26, 26, 46, 0.5);
+        font-size: 0.9rem;
+        pointer-events: none;
+      }
+      .input-wrap input {
+        width: 100%;
+        padding: 0.8rem 3rem 0.8rem 2.8rem;
+        background: rgba(248, 249, 252, 0.9);
+        border: 1.5px solid rgba(26, 26, 46, 0.15);
+        border-radius: 12px;
+        color: #1a1a2e;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+        outline: none;
+      }
+      .input-wrap input:focus {
+        border-color: #6e45e2;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(110, 69, 226, 0.15);
+      }
+      .input-wrap input::placeholder {
+        color: rgba(26, 26, 46, 0.35);
+      }
+      .toggle-pass {
+        position: absolute;
+        right: 0.8rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(26, 26, 46, 0.5);
+        cursor: pointer;
+        font-size: 1rem;
+        background: none;
+        border: none;
+        z-index: 2;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+      .toggle-pass:hover {
+        color: #6e45e2;
+        background: rgba(110, 69, 226, 0.1);
+      }
+      .error-box {
+        background: rgba(255, 107, 107, 0.12);
+        border: 1px solid rgba(255, 107, 107, 0.3);
+        color: #c62828;
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
+        font-size: 0.83rem;
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .login-btn {
+        width: 100%;
+        padding: 0.9rem;
+        background: linear-gradient(135deg, #6e45e2, #4d2bb5);
+        color: #fff;
+        border: none;
+        border-radius: 14px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.3px;
+        margin-top: 0.5rem;
+      }
+      .login-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(110, 69, 226, 0.4);
+      }
+      .login-btn:active {
+        transform: translateY(0);
+      }
+      .login-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .security-note {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        padding: 0.7rem 1rem;
+        background: rgba(0, 201, 193, 0.1);
+        border: 1px solid rgba(0, 201, 193, 0.3);
+        border-radius: 10px;
+        color: rgba(26, 26, 46, 0.7);
+        font-size: 0.75rem;
+      }
+
+      /* ══════════════════════════════════════════
+   ADMIN LAYOUT
+══════════════════════════════════════════ */
+      #adminLayout {
+        display: none;
+        min-height: 100vh;
+      }
+      #adminLayout.visible {
+        display: flex;
+      }
+
+      /* ── Sidebar ── */
+      .sidebar {
+        width: 240px;
+        background: #fff;
+        min-height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.06);
+        transition: width 0.3s;
+      }
+      .sidebar.collapsed {
+        width: 64px;
+      }
+      .sidebar-logo {
+        padding: 1.4rem 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      /* Logo Box Styles */
+      .sidebar-logo .logo-box {
+        width: 54px;
+        height: 54px;
+        background: none;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(110, 69, 226, 0.3);
+      }
+
+      .sidebar-logo .logo-box img {
+        width: 42px;
+        height: 42px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      /* Logo Text */
+      .sidebar-logo .logo-text {
+        font-family: "Orbitron", sans-serif;
+        font-size: 0.9rem;
+        background: linear-gradient(135deg, #a682ff, #00c9c1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: opacity 0.2s;
+      }
+
+      /* Collapsed State */
+      .sidebar.collapsed .sidebar-logo {
+        justify-content: center;
+        padding: 1.4rem 0;
+      }
+
+      .sidebar.collapsed .sidebar-logo .logo-box {
+        margin: 0 auto;
+      }
+
+      .sidebar.collapsed .sidebar-logo .logo-box img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .sidebar.collapsed .logo-text {
+        opacity: 0;
+        width: 0;
+        display: none;
+      }
+      .sidebar-nav {
+        flex: 1;
+        padding: 0.8rem 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      .sidebar-nav::-webkit-scrollbar {
+        width: 3px;
+      }
+      .sidebar-nav::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
+      }
+      .nav-section {
+        padding: 0.4rem 1rem 0.2rem;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: rgba(17, 35, 202, 0.85);
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: opacity 0.2s;
+      }
+      .sidebar.collapsed .nav-section {
+        opacity: 0;
+      }
+      .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.65rem 1.2rem;
+        color: #1a1a2e;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        white-space: nowrap;
+        overflow: hidden;
+        cursor: pointer;
+        border-left: 3px solid transparent;
+      }
+      .nav-item i {
+        font-size: 0.95rem;
+        width: 20px;
+        flex-shrink: 0;
+        text-align: center;
+      }
+      .nav-item:hover {
+        background: rgba(110, 69, 226, 0.12);
+        color: #6e45e2;
+      }
+      .nav-item.active {
+        background: linear-gradient(
+          90deg,
+          rgba(110, 69, 226, 0.18),
+          rgba(110, 69, 226, 0.06)
+        );
+        color: #6e45e2;
+        border-left-color: #6e45e2;
+        font-weight: 600;
+      }
+      .nav-item .badge {
+        margin-left: auto;
+        background: #ef4444;
+        color: #fff;
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        border-radius: 10px;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .sidebar.collapsed .nav-item span,
+      .sidebar.collapsed .nav-item .badge {
+        display: none;
+      }
+
+      /* ── Main ── */
+      .main {
+        margin-left: 240px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        transition: margin-left 0.3s;
+      }
+      .main.expanded {
+        margin-left: 64px;
+      }
+
+      /* ── Topbar ── */
+      .topbar {
+        background: #fff;
+        padding: 0.9rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .topbar-left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .sidebar-toggle {
+        background: none;
+        border: none;
+        font-size: 1.1rem;
+        color: #6a737d;
+        cursor: pointer;
+        padding: 0.3rem;
+        border-radius: 8px;
+        transition: 0.2s;
+      }
+      .sidebar-toggle:hover {
+        background: #f0f2f5;
+        color: #1a1a2e;
+      }
+      .breadcrumb {
+        font-size: 0.82rem;
+        color: #6a737d;
+      }
+      .breadcrumb span {
+        color: #1a1a2e;
+        font-weight: 600;
+      }
+      .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      .profile-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .profile-btn {
+        background: linear-gradient(135deg, #6e45e2, #00c9c1);
+        border: none;
+        padding: 0.4rem 0.8rem;
+        border-radius: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: 0.2s;
+      }
+      .profile-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(110, 69, 226, 0.3);
+      }
+      .profile-btn .fa-chevron-down {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+      }
+      .profile-dropdown.open .profile-btn .fa-chevron-down {
+        transform: rotate(180deg);
+      }
+      .dropdown-menu {
+        position: absolute;
+        top: 48px;
+        right: 0;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        min-width: 160px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s;
+        z-index: 1000;
+      }
+      .profile-dropdown.open .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+      }
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.75rem 1rem;
+        color: #4a5568;
+        font-size: 0.85rem;
+        transition: 0.2s;
+        text-decoration: none;
+        border-radius: 12px;
+        margin: 0.3rem;
+        cursor: pointer;
+      }
+      .dropdown-item:hover {
+        background: #f8f9fc;
+        color: #ef4444;
+      }
+      .dropdown-item i {
+        width: 18px;
+        font-size: 0.9rem;
+      }
+      .dropdown-item.logout-item {
+        color: #ef4444;
+      }
+      .dropdown-item.logout-item:hover {
+        background: #fef2f2;
+      }
+
+      /* ── Content ── */
+      .content {
+        padding: 1.5rem;
+        flex: 1;
+      }
+      .page {
+        display: none;
+      }
+      .page.active {
+        display: block;
+      }
+      .page-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .page-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1a1a2e;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .page-title i {
+        color: #6e45e2;
+      }
+      .page-subtitle {
+        font-size: 0.83rem;
+        color: #6a737d;
+        margin-top: 0.2rem;
+      }
+
+      /* ── Stats Grid ── */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .stat-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid transparent;
+        transition: 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .stat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        opacity: 0.06;
+        transform: translate(20px, -20px);
+      }
+      .stat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+      .stat-purple {
+        border-color: #6e45e2;
+      }
+      .stat-purple .stat-icon {
+        background: rgba(110, 69, 226, 0.12);
+        color: #6e45e2;
+      }
+      .stat-purple::before {
+        background: #6e45e2;
+      }
+      .stat-green {
+        border-color: #10b981;
+      }
+      .stat-green .stat-icon {
+        background: rgba(16, 185, 129, 0.12);
+        color: #10b981;
+      }
+      .stat-green::before {
+        background: #10b981;
+      }
+      .stat-orange {
+        border-color: #f59e0b;
+      }
+      .stat-orange .stat-icon {
+        background: rgba(245, 158, 11, 0.12);
+        color: #f59e0b;
+      }
+      .stat-orange::before {
+        background: #f59e0b;
+      }
+      .stat-blue {
+        border-color: #3b82f6;
+      }
+      .stat-blue .stat-icon {
+        background: rgba(59, 130, 246, 0.12);
+        color: #3b82f6;
+      }
+      .stat-blue::before {
+        background: #3b82f6;
+      }
+      .stat-red {
+        border-color: #ef4444;
+      }
+      .stat-red .stat-icon {
+        background: rgba(239, 68, 68, 0.12);
+        color: #ef4444;
+      }
+      .stat-red::before {
+        background: #ef4444;
+      }
+      .stat-teal {
+        border-color: #00c9c1;
+      }
+      .stat-teal .stat-icon {
+        background: rgba(0, 201, 193, 0.12);
+        color: #00c9c1;
+      }
+      .stat-teal::before {
+        background: #00c9c1;
+      }
+      .stat-pink {
+        border-color: #ec4899;
+      }
+      .stat-pink .stat-icon {
+        background: rgba(236, 72, 153, 0.12);
+        color: #ec4899;
+      }
+      .stat-pink::before {
+        background: #ec4899;
+      }
+      .stat-indigo {
+        border-color: #6366f1;
+      }
+      .stat-indigo .stat-icon {
+        background: rgba(99, 102, 241, 0.12);
+        color: #6366f1;
+      }
+      .stat-indigo::before {
+        background: #6366f1;
+      }
+      .stat-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .stat-info {
+        flex: 1;
+      }
+      .stat-value {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1a1a2e;
+        line-height: 1.2;
+      }
+      .stat-label {
+        font-size: 0.75rem;
+        color: #6a737d;
+        font-weight: 500;
+      }
+      .stat-sub {
+        width: 100%;
+        font-size: 0.7rem;
+        color: #6a737d;
+        padding-top: 0.3rem;
+      }
+      .stat-sub a {
+        color: #6e45e2;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      /* ── Cards ── */
+      .card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+      }
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.2rem;
+        border-bottom: 1px solid #f0f2f5;
+      }
+      .card-header h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #1a1a2e;
+      }
+      .card-header h3 i {
+        color: #6e45e2;
+      }
+      .card-body {
+        padding: 1.2rem;
+      }
+      .card-body.p0 {
+        padding: 0;
+      }
+      .grid-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* ── Tables ── */
+      .table-wrap {
+        overflow-x: auto;
+      }
+      .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.83rem;
+      }
+      .admin-table thead th {
+        padding: 0.7rem 1rem;
+        text-align: left;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #6a737d;
+        background: #f8f9fc;
+        border-bottom: 1px solid #e8eaf0;
+        white-space: nowrap;
+      }
+      .admin-table tbody td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #f0f2f5;
+        vertical-align: middle;
+      }
+      .admin-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .admin-table tbody tr:hover {
+        background: #fafbff;
+      }
+      .empty-row {
+        text-align: center;
+        color: #6a737d;
+        padding: 2rem !important;
+        font-style: italic;
+      }
+      .order-id {
+        background: #f3eeff;
+        color: #6e45e2;
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 0.78rem;
+        font-family: monospace;
+      }
+      .truncate {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* ── Buttons ── */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.83rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+        text-decoration: none;
+        line-height: 1.2;
+      }
+      .btn-sm {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.75rem;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #6e45e2, #4d2bb5);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      .btn-success {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: #fff;
+      }
+      .btn-danger {
+        background: linear-gradient(135deg, #ef4444, #c62828);
+        color: #fff;
+      }
+      .btn-warning {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        color: #fff;
+      }
+      .btn-outline {
+        background: transparent;
+        color: #6e45e2;
+        border: 1.5px solid #6e45e2;
+      }
+      .btn-outline:hover {
+        background: #6e45e2;
+        color: #fff;
+      }
+      .btn-gray {
+        background: #f0f2f5;
+        color: #4a5568;
+        border: 1px solid #e1e4e8;
+      }
+      .btn-gray:hover {
+        background: #e1e4e8;
+      }
+
+      /* ── Forms ── */
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #4a5568;
+        margin-bottom: 0.4rem;
+      }
+      .form-control {
+        width: 100%;
+        padding: 0.6rem 0.85rem;
+        border: 1.5px solid #e1e4e8;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        transition: 0.2s;
+        outline: none;
+        background: #fff;
+        color: #1a1a2e;
+      }
+      .form-control:focus {
+        border-color: #6e45e2;
+        box-shadow: 0 0 0 3px rgba(110, 69, 226, 0.1);
+      }
+      select.form-control {
+        appearance: auto;
+      }
+
+      /* ── Filters ── */
+      .filters-bar {
+        display: flex;
+        gap: 0.7rem;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      .filter-input {
+        padding: 0.5rem 0.85rem;
+        border: 1.5px solid #e1e4e8;
+        border-radius: 8px;
+        font-size: 0.82rem;
+        outline: none;
+        transition: 0.2s;
+        background: #fff;
+        color: #1a1a2e;
+      }
+      .filter-input:focus {
+        border-color: #6e45e2;
+      }
+
+      /* ── Alerts ── */
+      .alert {
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .alert-success {
+        background: #e8f5e9;
+        color: #2e7d32;
+        border: 1px solid #c8e6c9;
+      }
+      .alert-error {
+        background: #ffebee;
+        color: #c62828;
+        border: 1px solid #ffcdd2;
+      }
+      .alert-hidden {
+        display: none;
+      }
+
+      /* ── Pagination ── */
+      .pagination {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        justify-content: center;
+        padding: 1rem 0;
+      }
+      .page-btn {
+        padding: 0.4rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1.5px solid #e1e4e8;
+        background: #fff;
+        color: #4a5568;
+        transition: 0.2s;
+        text-decoration: none;
+        font-family: "Poppins", sans-serif;
+      }
+      .page-btn:hover,
+      .page-btn.active {
+        background: #6e45e2;
+        color: #fff;
+        border-color: #6e45e2;
+      }
+      .page-btn.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+
+      /* ── Stars ── */
+      .stars {
+        color: #f59e0b;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+      }
+
+      /* ── Status Badges ── */
+      .badge-status {
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: inline-block;
+      }
+
+      /* ── Loading Spinner ── */
+      .spinner {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(110, 69, 226, 0.3);
+        border-top-color: #6e45e2;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        vertical-align: middle;
+        margin-right: 0.3rem;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ── Detail Panel (order/message view) ── */
+      .detail-card {
+        border: 2px solid #6e45e2 !important;
+      }
+      .detail-card .card-header {
+        background: linear-gradient(135deg, #f3eeff, #eaf9ff);
+      }
+      .detail-info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .detail-section-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #6a737d;
+        text-transform: uppercase;
+        margin-bottom: 0.8rem;
+      }
+
+      /* ── Settings ── */
+      .settings-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .settings-info-table {
+        width: 100%;
+        font-size: 0.85rem;
+      }
+      .settings-info-table tr {
+        border-bottom: 1px solid #f0f2f5;
+      }
+      .settings-info-table td {
+        padding: 0.6rem 0;
+        vertical-align: top;
+      }
+      .settings-info-table td:first-child {
+        color: #6a737d;
+        width: 60%;
+      }
+      .security-tips-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+      }
+      .security-tip {
+        background: #f8f9fc;
+        border-radius: 12px;
+        padding: 1rem;
+        border-left: 3px solid #6e45e2;
+      }
+
+      /* ── Avatar initials ── */
+      .avatar-init {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, #6e45e2, #00c9c1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+      }
+
+      /* ── Message view ── */
+      .msg-body-box {
+        background: #f8f9fc;
+        border-radius: 12px;
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+        border-left: 3px solid #6e45e2;
+        line-height: 1.8;
+        color: #1a1a2e;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 900px) {
+        .grid-2col {
+          grid-template-columns: 1fr;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .settings-grid {
+          grid-template-columns: 1fr;
+        }
+        .detail-info-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .sidebar {
+          transform: translateX(-100%);
+          transition: transform 0.3s;
+        }
+        .sidebar.mobile-open {
+          transform: translateX(0);
+        }
+        .main {
+          margin-left: 0 !important;
+        }
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+        .detail-info-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════════════════════════════════
+     LOGIN PAGE
+══════════════════════════════════════════ -->
+    <div id="loginPage">
+      <div class="bg-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+      </div>
+      <div class="login-card">
+        <div class="login-logo">
+          <div class="icon"><img src="VR-logo.png" alt="Logo" /></div>
+          <h1>VRverse Admin</h1>
+          <p>Secure Control Panel</p>
+        </div>
+        <div id="loginError" class="error-box" style="display: none">
+          <i class="fas fa-circle-exclamation"></i>
+          <span id="loginErrorMsg"></span>
+        </div>
+        <div id="loginFormWrap">
+          <div class="login-form-group">
+            <label>Username</label>
+            <div class="input-wrap">
+              <i class="fas fa-user icon-left"></i>
+              <input
+                type="text"
+                id="loginUsername"
+                placeholder="Enter admin username"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="login-form-group">
+            <label>Password</label>
+            <div class="input-wrap">
+              <i class="fas fa-lock icon-left"></i>
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter password"
+              />
+              <button
+                type="button"
+                class="toggle-pass"
+                onclick="toggleLoginPass()"
+              >
+                <i class="fas fa-eye" id="passIcon"></i>
+              </button>
+            </div>
+          </div>
+          <button class="login-btn" id="loginBtn" onclick="doLogin()">
+            <i class="fas fa-right-to-bracket"></i> Sign In to Admin
+          </button>
+        </div>
+        <div class="security-note">
+          <i class="fas fa-shield-check"></i>
+          Protected by rate limiting &amp; session security
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+     ADMIN LAYOUT
+══════════════════════════════════════════ -->
+    <div id="adminLayout">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+          <div class="logo-box">
+            <img src="VR-logo.png" alt="VRverse Logo" />
+          </div>
+          <span class="logo-text">VRverse Admin</span>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">Main</div>
+          <div
+            class="nav-item"
+            data-page="dashboard"
+            onclick="navigate('dashboard')"
+          >
+            <i class="fas fa-chart-line"></i><span>Dashboard</span>
+          </div>
+          <div class="nav-section">Management</div>
+          <div class="nav-item" data-page="orders" onclick="navigate('orders')">
+            <i class="fas fa-shopping-bag"></i><span>Orders</span>
+          </div>
+          <div class="nav-item" data-page="users" onclick="navigate('users')">
+            <i class="fas fa-users"></i><span>Users</span>
+          </div>
+          <div
+            class="nav-item"
+            data-page="messages"
+            onclick="navigate('messages')"
+          >
+            <i class="fas fa-inbox"></i><span>Messages</span>
+            <span class="badge" id="msgBadge" style="display: none">0</span>
+          </div>
+          <div
+            class="nav-item"
+            data-page="reviews"
+            onclick="navigate('reviews')"
+          >
+            <i class="fas fa-star"></i><span>Reviews</span>
+          </div>
+          <div
+            class="nav-item"
+            data-page="newsletter"
+            onclick="navigate('newsletter')"
+          >
+            <i class="fas fa-paper-plane"></i><span>Newsletter</span>
+          </div>
+          <div class="nav-section">System</div>
+          <div
+            class="nav-item"
+            data-page="settings"
+            onclick="navigate('settings')"
+          >
+            <i class="fas fa-gear"></i><span>Settings</span>
+          </div>
+          <div class="nav-section">Quick Links</div>
+          <div class="nav-item" onclick="window.open('index.html', '_blank')">
+            <i class="fas fa-globe"></i><span>View Website</span>
+          </div>
+          <div class="nav-item" onclick="window.open('shop.html', '_blank')">
+            <i class="fas fa-store"></i><span>View Shop</span>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main" id="mainContent">
+        <!-- Topbar -->
+        <div class="topbar">
+          <div class="topbar-left">
+            <button
+              class="sidebar-toggle"
+              id="sidebarToggle"
+              title="Toggle sidebar"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="breadcrumb">
+              Admin / <span id="breadcrumbPage">Dashboard</span>
+            </div>
+          </div>
+          <div class="topbar-right">
+            <span
+              style="font-size: 0.78rem; color: #6a737d"
+              id="topbarTime"
+            ></span>
+            <div class="profile-dropdown" id="profileDropdown">
+              <button class="profile-btn" id="profileBtn">
+                <i class="fas fa-user-circle"></i>
+                <span id="adminUsernameDisplay">Admin</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-menu">
+                <div class="dropdown-item logout-item" onclick="doLogout()">
+                  <i class="fas fa-right-from-bracket"></i> Logout
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="content">
+          <!-- ── DASHBOARD ── -->
+          <div class="page" id="page-dashboard">
+            <div class="page-header">
+              <div>
+                <h1 class="page-title">
+                  <i class="fas fa-chart-line"></i> Dashboard
+                </h1>
+                <p class="page-subtitle">
+                  Welcome back, <strong id="dashWelcome">Admin</strong> —
+                  <span id="dashDate"></span>
+                </p>
+              </div>
+              <div style="display: flex; gap: 0.6rem; align-items: center">
+                <span
+                  style="
+                    background: rgba(16, 185, 129, 0.15);
+                    color: #10b981;
+                    padding: 0.4rem 1rem;
+                    border-radius: 20px;
+                    font-size: 0.78rem;
+                    font-weight: 600;
+                  "
+                >
+                  <i
+                    class="fas fa-circle"
+                    style="font-size: 0.5rem; margin-right: 0.4rem"
+                  ></i>
+                  System Online
+                </span>
+              </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid" id="statsGrid">
+              <div class="stat-card stat-purple">
+                <div class="stat-icon"><i class="fas fa-shopping-bag"></i></div>
+                <div class="stat-info">
+                  <div class="stat-value" id="s-orders">—</div>
+                  <div class="stat-label">Total Orders</div>
+                </div>
+                <div class="stat-sub">+<span id="s-today">0</span> today</div>
+              </div>
+              <div class="stat-card stat-green">
+                <div class="stat-icon">
+                  <i class="fas fa-bangladeshi-taka-sign"></i>
+                </div>
+                <div class="stat-info">
+                  <div class="stat-value" id="s-revenue">—</div>
+                  <div class="stat-label">Total Revenue</div>
+                </div>
+                <div class="stat-sub">All time</div>
+              </div>
+              <div class="stat-card stat-orange">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                <div class="stat-info">
+                  <div class="stat-value" id="s-pending">—</div>
+                  <div class="stat-label">Active Orders</div>
+                </div>
+                <div class="stat-sub">Need processing</div>
+              </div>
+              <div class="stat-card stat-blue">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-info">
+                  <div class="stat-value" id="s-users">—</div>
+                  <div class="stat-label">Registered Users</div>
+                </div>
+                <div class="stat-sub">Active accounts</div>
+              </div>
+              <div class="stat-card stat-red">
+                <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+                <div class="stat-info">
+                  <div class="stat-value" id="s-messages">—</div>
+                  <div class="stat-label">Unread Messages</div>
+                </div>
+                <div class="stat-sub">
+                  <a onclick="navigate('messages')">View all →</a>
+                </div>
+              </div>
+              <div class="stat-card stat-teal">
+                <div class="stat-icon"><i class="fas fa-star"></i></div>
+                <div class="stat-info">
+                  <div class="stat-value" id="s-reviews">—</div>
+                  <div class="stat-label">Total Reviews</div>
+                </div>
+                <div class="stat-sub">
+                  <a onclick="navigate('reviews')">Manage →</a>
+                </div>
+              </div>
+              <div class="stat-card stat-pink">
+                <div class="stat-icon"><i class="fas fa-paper-plane"></i></div>
+                <div class="stat-info">
+                  <div class="stat-value" id="s-newsletter">—</div>
+                  <div class="stat-label">Subscribers</div>
+                </div>
+                <div class="stat-sub">
+                  <a onclick="navigate('newsletter')">View list →</a>
+                </div>
+              </div>
+              <div class="stat-card stat-indigo">
+                <div class="stat-icon"><i class="fas fa-calendar-day"></i></div>
+                <div class="stat-info">
+                  <div class="stat-value" id="s-today2">—</div>
+                  <div class="stat-label">Today's Orders</div>
+                </div>
+                <div class="stat-sub" id="s-dateStr"></div>
+              </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="grid-2col">
+              <div class="card">
+                <div class="card-header">
+                  <h3>
+                    <i class="fas fa-chart-bar"></i> Revenue (Last 6 Months)
+                  </h3>
+                </div>
+                <div class="card-body">
+                  <canvas id="revenueChart" height="220"></canvas>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <h3><i class="fas fa-chart-pie"></i> Order Status</h3>
+                </div>
+                <div
+                  class="card-body"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <canvas
+                    id="statusChart"
+                    height="220"
+                    style="max-width: 260px"
+                  ></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="card">
+              <div class="card-header">
+                <h3><i class="fas fa-shopping-cart"></i> Recent Orders</h3>
+                <button
+                  class="btn btn-sm btn-outline"
+                  onclick="navigate('orders')"
+                >
+                  View All
+                </button>
+              </div>
+              <div class="card-body p0">
+                <div class="table-wrap">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dashRecentOrders">
+                      <tr>
+                        <td colspan="7" class="empty-row">Loading...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Messages -->
+            <div class="card">
+              <div class="card-header">
+                <h3><i class="fas fa-inbox"></i> Recent Messages</h3>
+                <button
+                  class="btn btn-sm btn-outline"
+                  onclick="navigate('messages')"
+                >
+                  View All
+                </button>
+              </div>
+              <div class="card-body p0">
+                <div class="table-wrap">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dashRecentMessages">
+                      <tr>
+                        <td colspan="6" class="empty-row">Loading...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /dashboard -->
+
+          <!-- ── ORDERS ── -->
+          <div class="page" id="page-orders">
+            <div class="page-header">
+              <div>
+                <h1 class="page-title">
+                  <i class="fas fa-shopping-bag"></i> Orders
+                </h1>
+                <p class="page-subtitle">
+                  Total <span id="orderTotal">0</span> order(s) found
+                </p>
+              </div>
+            </div>
+            <div id="orderAlert" class="alert alert-hidden"></div>
+            <!-- Order Detail View -->
+            <div id="orderDetailWrap" style="display: none"></div>
+            <!-- Filters -->
+            <div class="card">
+              <div class="card-body">
+                <div class="filters-bar">
+                  <input
+                    type="text"
+                    id="orderSearch"
+                    class="filter-input"
+                    placeholder="🔍 Search order ID, name, email..."
+                    style="flex: 1; min-width: 200px"
+                  />
+                  <select id="orderStatusFilter" class="filter-input">
+                    <option value="">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                  <select id="orderPaymentFilter" class="filter-input">
+                    <option value="">All Payments</option>
+                  </select>
+                  <button class="btn btn-primary btn-sm" onclick="loadOrders()">
+                    <i class="fas fa-filter"></i> Filter
+                  </button>
+                  <button
+                    class="btn btn-gray btn-sm"
+                    onclick="clearOrderFilters()"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Table -->
+            <div class="card">
+              <div class="card-body p0">
+                <div class="table-wrap">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Delivery Date</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                      <tr>
+                        <td colspan="9" class="empty-row">Loading...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="pagination" id="ordersPagination"></div>
+              </div>
+            </div>
+          </div>
+          <!-- /orders -->
+
+          <!-- ── MESSAGES ── -->
+          <div class="page" id="page-messages">
+            <div class="page-header">
+              <div>
+                <h1 class="page-title">
+                  <i class="fas fa-inbox"></i> Messages
+                  <span
+                    id="msgNewBadge"
+                    style="
+                      background: #ef4444;
+                      color: #fff;
+                      font-size: 0.65rem;
+                      padding: 2px 8px;
+                      border-radius: 12px;
+                      font-weight: 700;
+                      vertical-align: middle;
+                      display: none;
+                    "
+                    >0 new</span
+                  >
+                </h1>
+                <p class="page-subtitle">
+                  Total <span id="msgTotal">0</span> message(s)
+                </p>
+              </div>
+              <button
+                class="btn btn-outline btn-sm"
+                id="markAllReadBtn"
+                style="display: none"
+                onclick="markAllRead()"
+              >
+                <i class="fas fa-check-double"></i> Mark All Read
+              </button>
+            </div>
+            <div id="msgAlert" class="alert alert-hidden"></div>
+            <div id="msgDetailWrap" style="display: none"></div>
+            <!-- Filters -->
+            <div class="card">
+              <div class="card-body">
+                <div class="filters-bar">
+                  <input
+                    type="text"
+                    id="msgSearch"
+                    class="filter-input"
+                    placeholder="🔍 Search name, email, message..."
+                    style="flex: 1; min-width: 200px"
+                  />
+                  <select id="msgStatusFilter" class="filter-input">
+                    <option value="">All Status</option>
+                    <option value="unread">Unread</option>
+                    <option value="read">Read</option>
+                    <option value="replied">Replied</option>
+                  </select>
+                  <button
+                    class="btn btn-primary btn-sm"
+                    onclick="loadMessages()"
+                  >
+                    <i class="fas fa-filter"></i> Filter
+                  </button>
+                  <button
+                    class="btn btn-gray btn-sm"
+                    onclick="clearMsgFilters()"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body p0">
+                <div class="table-wrap">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="messagesTableBody">
+                      <tr>
+                        <td colspan="7" class="empty-row">Loading...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="pagination" id="msgsPagination"></div>
+              </div>
+            </div>
+          </div>
+          <!-- /messages -->
+
+          <!-- ── USERS ── -->
+          <div class="page" id="page-users">
+            <div class="page-header">
+              <div>
+                <h1 class="page-title"><i class="fas fa-users"></i> Users</h1>
+                <p class="page-subtitle">
+                  Total <span id="usersTotal">0</span> user(s)
+                </p>
+              </div>
+            </div>
+            <div id="usersAlert" class="alert alert-hidden"></div>
+            <!-- Filters -->
+            <div class="card">
+              <div class="card-body">
+                <div class="filters-bar">
+                  <input
+                    type="text"
+                    id="usersSearch"
+                    class="filter-input"
+                    placeholder="🔍 Search name or email..."
+                    style="flex: 1; min-width: 200px"
+                  />
+                  <select id="usersStatusFilter" class="filter-input">
+                    <option value="">All Users</option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                  </select>
+                  <button class="btn btn-primary btn-sm" onclick="loadUsers()">
+                    <i class="fas fa-filter"></i> Filter
+                  </button>
+                  <button
+                    class="btn btn-gray btn-sm"
+                    onclick="clearUsersFilters()"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body p0">
+                <div class="table-wrap">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Email</th>
+                        <th>Orders</th>
+                        <th>Status</th>
+                        <th>Joined</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                      <tr>
+                        <td colspan="7" class="empty-row">Loading...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="pagination" id="usersPagination"></div>
+              </div>
+            </div>
+          </div>
+          <!-- /users -->
+
+          <!-- ── REVIEWS ── -->
+          <div class="page" id="page-reviews">
+            <div class="page-header">
+              <div>
+                <h1 class="page-title">
+                  <i class="fas fa-star"></i> Reviews
+                  <span
+                    id="reviewsPendingBadge"
+                    style="
+                      background: #f59e0b;
+                      color: #fff;
+                      font-size: 0.65rem;
+                      padding: 2px 8px;
+                      border-radius: 12px;
+                      font-weight: 700;
+                      vertical-align: middle;
+                      display: none;
+                    "
+                    >0 pending</span
+                  >
+                </h1>
+                <p class="page-subtitle">
+                  Total <span id="reviewsTotal">0</span> review(s) | Average
+                  Rating: <strong id="reviewsAvg">0/5 ⭐</strong>
+                </p>
+              </div>
+              <button
+                class="btn btn-success btn-sm"
+                id="approveAllBtn"
+                style="display: none"
+                onclick="approveAllReviews()"
+              >
+                <i class="fas fa-check-double"></i> Approve All Pending
+              </button>
+            </div>
+            <div id="reviewsAlert" class="alert alert-hidden"></div>
+            <!-- Filters -->
+            <div class="card">
+              <div class="card-body">
+                <div class="filters-bar">
+                  <input
+                    type="text"
+                    id="reviewsSearch"
+                    class="filter-input"
+                    placeholder="🔍 Search name, product, review..."
+                    style="flex: 1; min-width: 200px"
+                  />
+                  <select id="reviewsStatusFilter" class="filter-input">
+                    <option value="">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                  </select>
+                  <select id="reviewsRatingFilter" class="filter-input">
+                    <option value="">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                  </select>
+                  <button
+                    class="btn btn-primary btn-sm"
+                    onclick="loadReviews()"
+                  >
+                    <i class="fas fa-filter"></i> Filter
+                  </button>
+                  <button
+                    class="btn btn-gray btn-sm"
+                    onclick="clearReviewsFilters()"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body p0">
+                <div class="table-wrap">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Reviewer</th>
+                        <th>Product</th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="reviewsTableBody">
+                      <tr>
+                        <td colspan="7" class="empty-row">Loading...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="pagination" id="reviewsPagination"></div>
+              </div>
+            </div>
+          </div>
+          <!-- /reviews -->
+
+          <!-- ── NEWSLETTER ── -->
+          <div class="page" id="page-newsletter">
+            <div class="page-header">
+              <div>
+                <h1 class="page-title">
+                  <i class="fas fa-paper-plane"></i> Newsletter Subscribers
+                </h1>
+                <p class="page-subtitle">
+                  Total <span id="nlTotal">0</span> subscriber(s)
+                </p>
+              </div>
+              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap">
+                <a
+                  href="admin-api.php?action=newsletter_export_csv"
+                  class="btn btn-success btn-sm"
+                  target="_blank"
+                  ><i class="fas fa-download"></i> Export CSV</a
+                >
+                <button
+                  class="btn btn-danger btn-sm"
+                  onclick="
+                    if (
+                      confirm('Delete ALL subscribers? This cannot be undone!')
+                    )
+                      deleteAllSubscribers();
+                  "
+                >
+                  <i class="fas fa-trash-can"></i> Delete All
+                </button>
+              </div>
+            </div>
+            <div id="nlAlert" class="alert alert-hidden"></div>
+            <div class="grid-2col">
+              <div class="card">
+                <div class="card-header">
+                  <h3><i class="fas fa-plus"></i> Add Subscriber</h3>
+                </div>
+                <div class="card-body">
+                  <div style="display: flex; gap: 0.6rem">
+                    <input
+                      type="email"
+                      id="nlAddEmail"
+                      class="form-control"
+                      placeholder="Enter email address..."
+                      style="flex: 1"
+                    />
+                    <button class="btn btn-primary" onclick="addSubscriber()">
+                      <i class="fas fa-plus"></i> Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <h3><i class="fas fa-magnifying-glass"></i> Search</h3>
+                </div>
+                <div class="card-body">
+                  <div style="display: flex; gap: 0.6rem">
+                    <input
+                      type="text"
+                      id="nlSearch"
+                      class="form-control"
+                      placeholder="Search email..."
+                      style="flex: 1"
+                    />
+                    <button class="btn btn-primary" onclick="loadNewsletter()">
+                      <i class="fas fa-search"></i>
+                    </button>
+                    <button class="btn btn-gray" onclick="clearNlFilters()">
+                      Clear
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body p0">
+                <div class="table-wrap">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Email</th>
+                        <th>Subscribed On</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="nlTableBody">
+                      <tr>
+                        <td colspan="4" class="empty-row">Loading...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="pagination" id="nlPagination"></div>
+              </div>
+            </div>
+          </div>
+          <!-- /newsletter -->
+
+          <!-- ── SETTINGS ── -->
+          <div class="page" id="page-settings">
+            <div class="page-header">
+              <div>
+                <h1 class="page-title"><i class="fas fa-gear"></i> Settings</h1>
+                <p class="page-subtitle">Manage admin panel configuration</p>
+              </div>
+            </div>
+            <div id="settingsAlert" class="alert alert-hidden"></div>
+            <div class="settings-grid">
+              <!-- Change Password -->
+              <div class="card">
+                <div class="card-header">
+                  <h3><i class="fas fa-lock"></i> Change Admin Password</h3>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Current Password</label>
+                    <input
+                      type="password"
+                      id="currentPass"
+                      class="form-control"
+                      placeholder="Enter current password"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>New Password</label>
+                    <input
+                      type="password"
+                      id="newPass"
+                      class="form-control"
+                      placeholder="Min 8 chars, 1 uppercase, 1 number"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Confirm New Password</label>
+                    <input
+                      type="password"
+                      id="confirmPass"
+                      class="form-control"
+                      placeholder="Repeat new password"
+                    />
+                  </div>
+                  <button class="btn btn-primary" onclick="changePassword()">
+                    <i class="fas fa-save"></i> Update Password
+                  </button>
+                </div>
+              </div>
+              <!-- System Info -->
+              <div class="card">
+                <div class="card-header">
+                  <h3><i class="fas fa-circle-info"></i> System Information</h3>
+                </div>
+                <div class="card-body">
+                  <table class="settings-info-table" id="sysInfoTable">
+                    <tr>
+                      <td>PHP Version</td>
+                      <td><strong id="si-php">—</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Database</td>
+                      <td><strong id="si-db">—</strong></td>
+                    </tr>
+                    <tr>
+                      <td>DB Size</td>
+                      <td><strong id="si-dbsize">—</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Tables</td>
+                      <td><strong id="si-tables">—</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Session Lifetime</td>
+                      <td><strong id="si-session">—</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Max Login Attempts</td>
+                      <td><strong id="si-maxattempts">—</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Lockout Duration</td>
+                      <td><strong id="si-lockout">—</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Server Time</td>
+                      <td><strong id="si-time">—</strong></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <!-- Security Tips -->
+              <div class="card" style="grid-column: 1/-1">
+                <div class="card-header">
+                  <h3><i class="fas fa-shield-halved"></i> Security Tips</h3>
+                </div>
+                <div class="card-body">
+                  <div class="security-tips-grid">
+                    <div
+                      class="security-tip"
+                      style="border-left-color: #10b981"
+                    >
+                      <p
+                        style="
+                          font-weight: 700;
+                          font-size: 0.85rem;
+                          margin-bottom: 0.3rem;
+                          display: flex;
+                          align-items: center;
+                          gap: 0.5rem;
+                        "
+                      >
+                        <i class="fas fa-lock" style="color: #10b981"></i> Use a
+                        strong password
+                      </p>
+                      <p style="font-size: 0.78rem; color: #6a737d">
+                        Minimum 12 characters with uppercase, numbers &amp;
+                        symbols.
+                      </p>
+                    </div>
+                    <div
+                      class="security-tip"
+                      style="border-left-color: #f59e0b"
+                    >
+                      <p
+                        style="
+                          font-weight: 700;
+                          font-size: 0.85rem;
+                          margin-bottom: 0.3rem;
+                          display: flex;
+                          align-items: center;
+                          gap: 0.5rem;
+                        "
+                      >
+                        <i class="fas fa-rotate" style="color: #f59e0b"></i>
+                        Change password regularly
+                      </p>
+                      <p style="font-size: 0.78rem; color: #6a737d">
+                        Update your admin password every 3 months.
+                      </p>
+                    </div>
+                    <div
+                      class="security-tip"
+                      style="border-left-color: #3b82f6"
+                    >
+                      <p
+                        style="
+                          font-weight: 700;
+                          font-size: 0.85rem;
+                          margin-bottom: 0.3rem;
+                          display: flex;
+                          align-items: center;
+                          gap: 0.5rem;
+                        "
+                      >
+                        <i class="fas fa-eye-slash" style="color: #3b82f6"></i>
+                        Protect the admin folder
+                      </p>
+                      <p style="font-size: 0.78rem; color: #6a737d">
+                        Add .htaccess IP restriction in production.
+                      </p>
+                    </div>
+                    <div
+                      class="security-tip"
+                      style="border-left-color: #6e45e2"
+                    >
+                      <p
+                        style="
+                          font-weight: 700;
+                          font-size: 0.85rem;
+                          margin-bottom: 0.3rem;
+                          display: flex;
+                          align-items: center;
+                          gap: 0.5rem;
+                        "
+                      >
+                        <i class="fas fa-database" style="color: #6e45e2"></i>
+                        Backup your database
+                      </p>
+                      <p style="font-size: 0.78rem; color: #6a737d">
+                        Export your database weekly from phpMyAdmin.
+                      </p>
+                    </div>
+                    <div
+                      class="security-tip"
+                      style="border-left-color: #00c9c1"
+                    >
+                      <p
+                        style="
+                          font-weight: 700;
+                          font-size: 0.85rem;
+                          margin-bottom: 0.3rem;
+                          display: flex;
+                          align-items: center;
+                          gap: 0.5rem;
+                        "
+                      >
+                        <i class="fas fa-shield" style="color: #00c9c1"></i> Use
+                        HTTPS in production
+                      </p>
+                      <p style="font-size: 0.78rem; color: #6a737d">
+                        Enable SSL certificate when hosting live.
+                      </p>
+                    </div>
+                    <div
+                      class="security-tip"
+                      style="border-left-color: #ef4444"
+                    >
+                      <p
+                        style="
+                          font-weight: 700;
+                          font-size: 0.85rem;
+                          margin-bottom: 0.3rem;
+                          display: flex;
+                          align-items: center;
+                          gap: 0.5rem;
+                        "
+                      >
+                        <i
+                          class="fas fa-user-shield"
+                          style="color: #ef4444"
+                        ></i>
+                        Never share credentials
+                      </p>
+                      <p style="font-size: 0.78rem; color: #6a737d">
+                        Keep admin credentials strictly private.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /settings -->
+        </div>
+        <!-- .content -->
+      </div>
+      <!-- .main -->
+    </div>
+    <!-- #adminLayout -->
+
+    <script>
+      // ═══════════════════════════════════════════════════════════
+      // CONFIG
+      // ═══════════════════════════════════════════════════════════
+      const API = "admin-api.php";
+      let csrfToken = "";
+      let revenueChart = null;
+      let statusChart = null;
+      let currentPage = "dashboard";
+      let orderCurrPage = 1,
+        msgCurrPage = 1,
+        usersCurrPage = 1;
+      let reviewsCurrPage = 1,
+        nlCurrPage = 1;
+
+      // ═══════════════════════════════════════════════════════════
+      // UTILITY
+      // ═══════════════════════════════════════════════════════════
+      function esc(str) {
+        const d = document.createElement("div");
+        d.textContent = str ?? "";
+        return d.innerHTML;
+      }
+      function fmt(num) {
+        return Number(num).toLocaleString("en-BD");
+      }
+      function fmtMoney(num) {
+        return "৳" + fmt(Math.round(num));
+      }
+      function fmtDate(str) {
+        if (!str) return "—";
+        const d = new Date(str);
+        return (
+          d.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          }) +
+          ", " +
+          d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+        );
+      }
+      function statusBadge(status) {
+        const map = {
+          confirmed: ["#e8f5e9", "#2e7d32"],
+          pending: ["#fff8e1", "#f57f17"],
+          shipped: ["#e3f2fd", "#1565c0"],
+          delivered: ["#f3e5f5", "#6a1b9a"],
+          cancelled: ["#ffebee", "#c62828"],
+          unread: ["#fff8e1", "#f57f17"],
+          read: ["#e8f5e9", "#2e7d32"],
+          replied: ["#e3f2fd", "#1565c0"],
+          approved: ["#e8f5e9", "#2e7d32"],
+          rejected: ["#ffebee", "#c62828"],
+          active: ["#e8f5e9", "#2e7d32"],
+          inactive: ["#ffebee", "#c62828"],
+        };
+        const [bg, color] = map[status] || ["#f0f2f5", "#6a737d"];
+        return `<span class="badge-status" style="background:${bg};color:${color}">${esc(status.charAt(0).toUpperCase() + status.slice(1))}</span>`;
+      }
+      function starsHtml(rating) {
+        return (
+          '<span class="stars">' +
+          "★".repeat(rating) +
+          "☆".repeat(5 - rating) +
+          "</span>"
+        );
+      }
+      function showAlert(id, type, msg) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.className = `alert alert-${type}`;
+        el.innerHTML = `<i class="fas fa-${type === "success" ? "check-circle" : "exclamation-circle"}"></i> ${esc(msg)}`;
+        setTimeout(() => {
+          el.style.opacity = "0";
+          el.style.transition = "opacity .5s";
+          setTimeout(() => {
+            el.className = "alert alert-hidden";
+            el.style.opacity = "";
+            el.style.transition = "";
+          }, 500);
+        }, 4000);
+      }
+      async function apiFetch(params, method = "GET", body = null) {
+        const url = API + "?" + new URLSearchParams(params);
+        const opts = { method, credentials: "same-origin" };
+        if (method === "POST" && body) {
+          opts.body = body;
+        }
+        const res = await fetch(url, opts);
+        return res.json();
+      }
+      async function apiPost(action, formData) {
+        formData.append("action", action);
+        formData.append("csrf_token", csrfToken);
+        const res = await fetch(API, {
+          method: "POST",
+          body: formData,
+          credentials: "same-origin",
+        });
+        return res.json();
+      }
+      function buildPagination(pag, callback) {
+        if (pag.total_pages <= 1) return "";
+        let html = "";
+        if (pag.page > 1)
+          html += `<button class="page-btn" onclick="${callback}(${pag.page - 1})">‹ Prev</button>`;
+        for (let i = 1; i <= pag.total_pages; i++) {
+          html += `<button class="page-btn ${i === pag.page ? "active" : ""}" onclick="${callback}(${i})">${i}</button>`;
+        }
+        if (pag.page < pag.total_pages)
+          html += `<button class="page-btn" onclick="${callback}(${pag.page + 1})">Next ›</button>`;
+        return html;
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // INIT — Check auth on load
+      // ═══════════════════════════════════════════════════════════
+      async function init() {
+        updateClock();
+        setInterval(updateClock, 1000);
+        // Sidebar toggle
+        document
+          .getElementById("sidebarToggle")
+          .addEventListener("click", () => {
+            document.getElementById("sidebar").classList.toggle("collapsed");
+            document.getElementById("mainContent").classList.toggle("expanded");
+          });
+        // Profile dropdown
+        document.getElementById("profileBtn").addEventListener("click", (e) => {
+          e.stopPropagation();
+          document.getElementById("profileDropdown").classList.toggle("open");
+        });
+        document.addEventListener("click", () =>
+          document.getElementById("profileDropdown").classList.remove("open"),
+        );
+        // Check if already logged in
+        try {
+          const data = await apiFetch({ action: "check_auth" });
+          if (data.logged_in) {
+            csrfToken = (await apiFetch({ action: "csrf_token" })).token || "";
+            showAdmin(data.username);
+          } else {
+            showLogin();
+          }
+        } catch (e) {
+          showLogin();
+        }
+      }
+      function updateClock() {
+        const now = new Date();
+        const t = now.toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        const el = document.getElementById("topbarTime");
+        if (el)
+          el.innerHTML = `<i class="fas fa-clock" style="margin-right:.3rem"></i>${t}`;
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // AUTH
+      // ═══════════════════════════════════════════════════════════
+      function showLogin() {
+        document.getElementById("loginPage").style.display = "flex";
+        document.getElementById("adminLayout").classList.remove("visible");
+      }
+      function showAdmin(username) {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("adminLayout").classList.add("visible");
+        document.getElementById("adminUsernameDisplay").textContent =
+          username || "Admin";
+        document.getElementById("dashWelcome").textContent =
+          username || "Admin";
+        navigate("dashboard");
+      }
+      function toggleLoginPass() {
+        const inp = document.getElementById("loginPassword");
+        const ico = document.getElementById("passIcon");
+        if (inp.type === "password") {
+          inp.type = "text";
+          ico.className = "fas fa-eye-slash";
+        } else {
+          inp.type = "password";
+          ico.className = "fas fa-eye";
+        }
+      }
+      async function doLogin() {
+        const btn = document.getElementById("loginBtn");
+        const errDiv = document.getElementById("loginError");
+        const errMsg = document.getElementById("loginErrorMsg");
+        const username = document.getElementById("loginUsername").value.trim();
+        const password = document.getElementById("loginPassword").value;
+        if (!username || !password) {
+          errDiv.style.display = "flex";
+          errMsg.textContent = "Please enter username and password.";
+          return;
+        }
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span> Signing in...';
+        errDiv.style.display = "none";
+        try {
+          // Get CSRF token first
+          const tokenData = await apiFetch({ action: "csrf_token" });
+          csrfToken = tokenData.token || "";
+          const fd = new FormData();
+          fd.append("username", username);
+          fd.append("password", password);
+          const data = await apiPost("login", fd);
+          if (data.success) {
+            csrfToken = data.csrf_token || csrfToken;
+            showAdmin(data.username);
+          } else {
+            errDiv.style.display = "flex";
+            errMsg.textContent = data.error || "Login failed.";
+            btn.disabled = false;
+            btn.innerHTML =
+              '<i class="fas fa-right-to-bracket"></i> Sign In to Admin';
+          }
+        } catch (e) {
+          errDiv.style.display = "flex";
+          errMsg.textContent = "Connection error. Please try again.";
+          btn.disabled = false;
+          btn.innerHTML =
+            '<i class="fas fa-right-to-bracket"></i> Sign In to Admin';
+        }
+      }
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Enter" &&
+          document.getElementById("loginPage").style.display !== "none"
+        )
+          doLogin();
+      });
+      async function doLogout() {
+        const fd = new FormData();
+        await apiPost("logout", fd);
+        csrfToken = "";
+        showLogin();
+        document.getElementById("loginUsername").value = "";
+        document.getElementById("loginPassword").value = "";
+        document.getElementById("loginBtn").disabled = false;
+        document.getElementById("loginBtn").innerHTML =
+          '<i class="fas fa-right-to-bracket"></i> Sign In to Admin';
+        document.getElementById("loginError").style.display = "none";
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // NAVIGATION
+      // ═══════════════════════════════════════════════════════════
+      function navigate(page) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".nav-item")
+          .forEach((n) => n.classList.remove("active"));
+        const pageEl = document.getElementById("page-" + page);
+        if (pageEl) pageEl.classList.add("active");
+        const navEl = document.querySelector(`.nav-item[data-page="${page}"]`);
+        if (navEl) navEl.classList.add("active");
+        const breadcrumb = document.getElementById("breadcrumbPage");
+        if (breadcrumb)
+          breadcrumb.textContent = page.charAt(0).toUpperCase() + page.slice(1);
+        currentPage = page;
+        // Load page data
+        switch (page) {
+          case "dashboard":
+            loadDashboard();
+            break;
+          case "orders":
+            loadOrders();
+            break;
+          case "messages":
+            loadMessages();
+            break;
+          case "users":
+            loadUsers();
+            break;
+          case "reviews":
+            loadReviews();
+            break;
+          case "newsletter":
+            loadNewsletter();
+            break;
+          case "settings":
+            loadSettings();
+            break;
+        }
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // DASHBOARD
+      // ═══════════════════════════════════════════════════════════
+      async function loadDashboard() {
+        const now = new Date();
+        document.getElementById("dashDate").textContent =
+          now.toLocaleDateString("en-US", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          });
+        document.getElementById("s-dateStr").textContent =
+          now.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          });
+        try {
+          const data = await apiFetch({ action: "dashboard" });
+          if (!data.success) return;
+          const s = data.stats;
+          document.getElementById("s-orders").textContent = fmt(s.orders);
+          document.getElementById("s-revenue").textContent = fmtMoney(
+            s.revenue,
+          );
+          document.getElementById("s-pending").textContent = fmt(s.pending);
+          document.getElementById("s-users").textContent = fmt(s.users);
+          document.getElementById("s-messages").textContent = fmt(s.messages);
+          document.getElementById("s-reviews").textContent = fmt(s.reviews);
+          document.getElementById("s-newsletter").textContent = fmt(
+            s.newsletter,
+          );
+          document.getElementById("s-today").textContent = fmt(s.today);
+          document.getElementById("s-today2").textContent = fmt(s.today);
+          // Update msg badge
+          updateMsgBadge(s.messages);
+          // Charts
+          buildRevenueChart(data.monthly_revenue);
+          buildStatusChart(data.order_status);
+          // Recent orders
+          const tbody = document.getElementById("dashRecentOrders");
+          if (!data.recent_orders || !data.recent_orders.length) {
+            tbody.innerHTML =
+              '<tr><td colspan="7" class="empty-row">No orders yet</td></tr>';
+            return;
+          }
+          tbody.innerHTML = data.recent_orders
+            .map(
+              (o) => `
+      <tr>
+        <td><code class="order-id">${esc(o.order_id)}</code></td>
+        <td>${esc(o.full_name)}</td>
+        <td class="truncate" title="${esc(o.product_name)}">${esc((o.product_name || "").substring(0, 30))}${(o.product_name || "").length > 30 ? "…" : ""}</td>
+        <td><strong>${fmtMoney(o.total_amount)}</strong></td>
+        <td>${statusBadge(o.status)}</td>
+        <td>${fmtDate(o.created_at)}</td>
+        <td><button class="btn btn-sm btn-primary" onclick="viewOrder('${esc(o.order_id)}')">View</button></td>
+      </tr>`,
+            )
+            .join("");
+          // Recent messages
+          const mtbody = document.getElementById("dashRecentMessages");
+          if (!data.recent_messages || !data.recent_messages.length) {
+            mtbody.innerHTML =
+              '<tr><td colspan="6" class="empty-row">No messages yet</td></tr>';
+            return;
+          }
+          mtbody.innerHTML = data.recent_messages
+            .map(
+              (m) => `
+      <tr>
+        <td>${esc(m.name)}</td>
+        <td>${esc(m.email)}</td>
+        <td>${esc((m.subject || "—").substring(0, 30))}</td>
+        <td>${statusBadge(m.status)}</td>
+        <td>${fmtDate(m.created_at)}</td>
+        <td><button class="btn btn-sm btn-primary" onclick="viewMsg(${m.id})">Read</button></td>
+      </tr>`,
+            )
+            .join("");
+        } catch (e) {
+          console.error("Dashboard load error", e);
+        }
+      }
+      function buildRevenueChart(monthly) {
+        const ctx = document.getElementById("revenueChart").getContext("2d");
+        if (revenueChart) revenueChart.destroy();
+        const labels = monthly.map((m) => m.month);
+        const revs = monthly.map((m) => parseFloat(m.revenue) || 0);
+        revenueChart = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: labels.length ? labels : ["No data"],
+            datasets: [
+              {
+                label: "Revenue (৳)",
+                data: revs.length ? revs : [0],
+                backgroundColor: "rgba(110,69,226,.7)",
+                borderColor: "#6e45e2",
+                borderWidth: 2,
+                borderRadius: 8,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: { color: "rgba(0,0,0,.06)" },
+                ticks: { callback: (v) => "৳" + v.toLocaleString() },
+              },
+              x: { grid: { display: false } },
+            },
+          },
+        });
+      }
+      function buildStatusChart(orderStatus) {
+        const ctx = document.getElementById("statusChart").getContext("2d");
+        if (statusChart) statusChart.destroy();
+        const stColors = {
+          confirmed: "#10b981",
+          pending: "#f59e0b",
+          shipped: "#3b82f6",
+          delivered: "#8b5cf6",
+          cancelled: "#ef4444",
+        };
+        const labels = orderStatus.map((s) => s.status);
+        const data = orderStatus.map((s) => parseInt(s.cnt) || 0);
+        statusChart = new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels: labels.length ? labels : ["No data"],
+            datasets: [
+              {
+                data: data.length ? data : [1],
+                backgroundColor: labels.map((l) => stColors[l] || "#6b7280"),
+                borderWidth: 3,
+                borderColor: "#fff",
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: { padding: 14, font: { size: 12 } },
+              },
+            },
+            cutout: "65%",
+          },
+        });
+      }
+      function updateMsgBadge(count) {
+        const badge = document.getElementById("msgBadge");
+        if (count > 0) {
+          badge.textContent = count;
+          badge.style.display = "";
+        } else {
+          badge.style.display = "none";
+        }
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // ORDERS
+      // ═══════════════════════════════════════════════════════════
+      async function loadOrders(page = 1) {
+        orderCurrPage = page;
+        const search = document.getElementById("orderSearch").value.trim();
+        const status = document.getElementById("orderStatusFilter").value;
+        const payment = document.getElementById("orderPaymentFilter").value;
+        try {
+          const data = await apiFetch({
+            action: "orders_list",
+            search,
+            status,
+            payment,
+            page,
+          });
+          if (!data.success) return;
+          document.getElementById("orderTotal").textContent = fmt(
+            data.pagination.total,
+          );
+          // Payment filter options
+          const pSel = document.getElementById("orderPaymentFilter");
+          const curPay = pSel.value;
+          pSel.innerHTML =
+            '<option value="">All Payments</option>' +
+            (data.payment_methods || [])
+              .map(
+                (p) =>
+                  `<option value="${esc(p)}" ${p === curPay ? "selected" : ""}>${esc(p)}</option>`,
+              )
+              .join("");
+          // Table
+          const tbody = document.getElementById("ordersTableBody");
+          if (!data.orders || !data.orders.length) {
+            tbody.innerHTML =
+              '<tr><td colspan="9" class="empty-row">No orders found</td></tr>';
+          } else {
+            tbody.innerHTML = data.orders
+              .map(
+                (o) => `
+        <tr>
+          <td><code class="order-id">${esc(o.order_id)}</code></td>
+          <td>
+            <strong>${esc(o.full_name)}</strong>
+            <div style="font-size:.75rem;color:#6a737d">${esc(o.email)}</div>
+            <div style="font-size:.75rem;color:#6a737d">${esc(o.phone || "")}</div>
+          </td>
+          <td class="truncate" title="${esc(o.product_name)}">${esc((o.product_name || "").substring(0, 28))}${(o.product_name || "").length > 28 ? "…" : ""}</td>
+          <td><strong style="color:#6e45e2">${fmtMoney(o.total_amount)}</strong></td>
+          <td style="font-size:.78rem">${esc(o.payment_method || "—")}</td>
+          <td style="font-size:.78rem">${esc(o.delivery_date || "—")}</td>
+          <td>
+            <select class="filter-input" style="padding:.25rem .4rem;font-size:.72rem" onchange="updateOrderStatus('${esc(o.order_id)}',this.value)">
+              ${["pending", "confirmed", "shipped", "delivered", "cancelled"].map((s) => `<option value="${s}" ${o.status === s ? "selected" : ""}>${s.charAt(0).toUpperCase() + s.slice(1)}</option>`).join("")}
+            </select>
+          </td>
+          <td style="font-size:.75rem;color:#6a737d">${fmtDate(o.created_at)}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" onclick="viewOrder('${esc(o.order_id)}')"><i class="fas fa-eye"></i></button>
+            <button class="btn btn-sm btn-danger" onclick="if(confirm('Delete order ${esc(o.order_id)}?')) deleteOrder('${esc(o.order_id)}')"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>`,
+              )
+              .join("");
+          }
+          document.getElementById("ordersPagination").innerHTML =
+            buildPagination(data.pagination, "loadOrders");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      async function viewOrder(orderId) {
+        navigate("orders");
+        try {
+          const data = await apiFetch({ action: "orders_list", view: orderId });
+          if (!data.success || !data.order) return;
+          const o = data.order;
+          const wrap = document.getElementById("orderDetailWrap");
+          wrap.style.display = "block";
+          wrap.innerHTML = `
+      <div class="card detail-card">
+        <div class="card-header">
+          <h3><i class="fas fa-receipt"></i> Order Details — <code class="order-id">${esc(o.order_id)}</code></h3>
+          <button class="btn btn-gray btn-sm" onclick="document.getElementById('orderDetailWrap').style.display='none'"><i class="fas fa-times"></i> Close</button>
+        </div>
+        <div class="card-body">
+          <div class="detail-info-grid">
+            <div>
+              <p class="detail-section-title">Customer Info</p>
+              <p><strong>${esc(o.full_name)}</strong></p>
+              <p style="color:#6a737d;font-size:.85rem">${esc(o.email || "")}</p>
+              <p style="color:#6a737d;font-size:.85rem">${esc(o.phone || "")}</p>
+            </div>
+            <div>
+              <p class="detail-section-title">Order Info</p>
+              <p style="font-size:.85rem"><strong>Product:</strong> ${esc(o.product_name || "")}</p>
+              <p style="font-size:.85rem"><strong>Payment:</strong> ${esc(o.payment_method || "")}</p>
+              <p style="font-size:.85rem"><strong>Date:</strong> ${fmtDate(o.created_at)}</p>
+              <p style="font-size:.85rem"><strong>Delivery:</strong> ${esc(o.delivery_date || "—")}</p>
+            </div>
+            <div>
+              <p class="detail-section-title">Delivery &amp; Amount</p>
+              <p style="font-size:.85rem"><strong>Location:</strong> ${esc(o.delivery_location || "—")}</p>
+              <p style="font-size:.85rem;color:#6a737d">${esc(o.full_address || "")}</p>
+              <p style="margin-top:.5rem"><strong style="color:#6e45e2;font-size:1.1rem">${fmtMoney(o.total_amount)}</strong></p>
+              <p style="font-size:.78rem;color:#6a737d">Product: ${fmtMoney(o.product_price || 0)} + Delivery: ${fmtMoney(o.delivery_charge || 0)}</p>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid #f0f2f5;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+            <span>Current Status: ${statusBadge(o.status)}</span>
+            <select id="detailStatusSel" class="form-control" style="width:auto;padding:.4rem .7rem">
+              ${["pending", "confirmed", "shipped", "delivered", "cancelled"].map((s) => `<option value="${s}" ${o.status === s ? "selected" : ""}>${s.charAt(0).toUpperCase() + s.slice(1)}</option>`).join("")}
+            </select>
+            <button class="btn btn-primary btn-sm" onclick="updateOrderStatus('${esc(o.order_id)}',document.getElementById('detailStatusSel').value)"><i class="fas fa-save"></i> Update</button>
+          </div>
+        </div>
+      </div>`;
+          wrap.scrollIntoView({ behavior: "smooth", block: "start" });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      async function updateOrderStatus(orderId, status) {
+        const fd = new FormData();
+        fd.append("order_id", orderId);
+        fd.append("status", status);
+        const data = await apiPost("order_update_status", fd);
+        if (data.success) showAlert("orderAlert", "success", data.message);
+        else showAlert("orderAlert", "error", data.error);
+        loadOrders(orderCurrPage);
+      }
+      async function deleteOrder(orderId) {
+        const fd = new FormData();
+        fd.append("order_id", orderId);
+        const data = await apiPost("order_delete", fd);
+        if (data.success) showAlert("orderAlert", "success", data.message);
+        else showAlert("orderAlert", "error", data.error);
+        document.getElementById("orderDetailWrap").style.display = "none";
+        loadOrders(orderCurrPage);
+      }
+      function clearOrderFilters() {
+        document.getElementById("orderSearch").value = "";
+        document.getElementById("orderStatusFilter").value = "";
+        document.getElementById("orderPaymentFilter").value = "";
+        loadOrders(1);
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // MESSAGES
+      // ═══════════════════════════════════════════════════════════
+      async function loadMessages(page = 1) {
+        msgCurrPage = page;
+        const search = document.getElementById("msgSearch").value.trim();
+        const status = document.getElementById("msgStatusFilter").value;
+        try {
+          const data = await apiFetch({
+            action: "messages_list",
+            search,
+            status,
+            page,
+          });
+          if (!data.success) return;
+          document.getElementById("msgTotal").textContent = fmt(
+            data.pagination.total,
+          );
+          const unread = data.unread_count || 0;
+          updateMsgBadge(unread);
+          const nb = document.getElementById("msgNewBadge");
+          const marBtn = document.getElementById("markAllReadBtn");
+          if (unread > 0) {
+            nb.style.display = "";
+            nb.textContent = unread + " new";
+            marBtn.style.display = "";
+          } else {
+            nb.style.display = "none";
+            marBtn.style.display = "none";
+          }
+          const tbody = document.getElementById("messagesTableBody");
+          if (!data.messages || !data.messages.length) {
+            tbody.innerHTML =
+              '<tr><td colspan="7" class="empty-row">No messages found</td></tr>';
+          } else {
+            tbody.innerHTML = data.messages
+              .map(
+                (m) => `
+        <tr style="${m.status === "unread" ? "background:#fffdf0;font-weight:600" : ""}">
+          <td>
+            ${m.status === "unread" ? '<span style="display:inline-block;width:7px;height:7px;background:#ef4444;border-radius:50%;margin-right:.4rem"></span>' : ""}
+            ${esc(m.name)}
+          </td>
+          <td style="font-size:.82rem;color:#6a737d">${esc(m.email)}</td>
+          <td style="font-size:.82rem">${esc((m.subject || "—").substring(0, 30))}</td>
+          <td class="truncate" style="max-width:180px;font-size:.8rem;color:#6a737d">${esc((m.message || "").substring(0, 50))}…</td>
+          <td>${statusBadge(m.status)}</td>
+          <td style="font-size:.75rem;color:#6a737d">${fmtDate(m.created_at)}</td>
+          <td style="display:flex;gap:.3rem">
+            <button class="btn btn-sm btn-primary" onclick="viewMsg(${m.id})"><i class="fas fa-eye"></i></button>
+            <a href="mailto:${esc(m.email)}" class="btn btn-sm btn-success"><i class="fas fa-reply"></i></a>
+            <button class="btn btn-sm btn-danger" onclick="if(confirm('Delete?')) deleteMsg(${m.id})"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>`,
+              )
+              .join("");
+          }
+          document.getElementById("msgsPagination").innerHTML = buildPagination(
+            data.pagination,
+            "loadMessages",
+          );
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      async function viewMsg(id) {
+        navigate("messages");
+        try {
+          const data = await apiFetch({ action: "messages_list", view: id });
+          if (!data.success || !data.message) return;
+          const m = data.message;
+          const wrap = document.getElementById("msgDetailWrap");
+          wrap.style.display = "block";
+          wrap.innerHTML = `
+      <div class="card detail-card">
+        <div class="card-header">
+          <h3><i class="fas fa-envelope-open"></i> Message from ${esc(m.name)}</h3>
+          <button class="btn btn-gray btn-sm" onclick="document.getElementById('msgDetailWrap').style.display='none'"><i class="fas fa-times"></i> Close</button>
+        </div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+            <div>
+              <p style="font-size:.75rem;color:#6a737d;font-weight:700;text-transform:uppercase;margin-bottom:.3rem">From</p>
+              <p><strong>${esc(m.name)}</strong></p>
+              <p><a href="mailto:${esc(m.email)}" style="color:#6e45e2">${esc(m.email)}</a></p>
+            </div>
+            <div>
+              <p style="font-size:.75rem;color:#6a737d;font-weight:700;text-transform:uppercase;margin-bottom:.3rem">Details</p>
+              <p style="font-size:.85rem"><strong>Subject:</strong> ${esc(m.subject || "No subject")}</p>
+              <p style="font-size:.85rem"><strong>Received:</strong> ${fmtDate(m.created_at)}</p>
+              <p style="font-size:.85rem"><strong>Status:</strong> ${statusBadge(m.status)}</p>
+            </div>
+          </div>
+          <div class="msg-body-box">
+            <p style="font-size:.75rem;color:#6a737d;font-weight:700;text-transform:uppercase;margin-bottom:.6rem">Message</p>
+            <p>${esc(m.message || "").replace(/\n/g, "<br>")}</p>
+          </div>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center">
+            <a href="mailto:${esc(m.email)}?subject=Re: ${encodeURIComponent(m.subject || "Your inquiry")}" class="btn btn-primary btn-sm"><i class="fas fa-reply"></i> Reply via Email</a>
+            <select id="msgDetailStatus" class="filter-input" style="padding:.3rem .6rem;font-size:.78rem">
+              ${["unread", "read", "replied"].map((s) => `<option value="${s}" ${m.status === s ? "selected" : ""}>${s.charAt(0).toUpperCase() + s.slice(1)}</option>`).join("")}
+            </select>
+            <button class="btn btn-sm btn-success" onclick="updateMsgStatus(${m.id},document.getElementById('msgDetailStatus').value)"><i class="fas fa-save"></i> Update</button>
+            <button class="btn btn-sm btn-danger" onclick="if(confirm('Delete this message?')) deleteMsg(${m.id})"><i class="fas fa-trash"></i> Delete</button>
+          </div>
+        </div>
+      </div>`;
+          wrap.scrollIntoView({ behavior: "smooth", block: "start" });
+          loadMessages(msgCurrPage);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      async function updateMsgStatus(id, status) {
+        const fd = new FormData();
+        fd.append("msg_id", id);
+        fd.append("status", status);
+        const data = await apiPost("message_update_status", fd);
+        if (data.success) showAlert("msgAlert", "success", data.message);
+        else showAlert("msgAlert", "error", data.error);
+        loadMessages(msgCurrPage);
+      }
+      async function deleteMsg(id) {
+        const fd = new FormData();
+        fd.append("msg_id", id);
+        const data = await apiPost("message_delete", fd);
+        if (data.success) {
+          showAlert("msgAlert", "success", data.message);
+          document.getElementById("msgDetailWrap").style.display = "none";
+        } else showAlert("msgAlert", "error", data.error);
+        loadMessages(msgCurrPage);
+      }
+      async function markAllRead() {
+        const fd = new FormData();
+        const data = await apiPost("messages_mark_all_read", fd);
+        if (data.success) showAlert("msgAlert", "success", data.message);
+        loadMessages(msgCurrPage);
+      }
+      function clearMsgFilters() {
+        document.getElementById("msgSearch").value = "";
+        document.getElementById("msgStatusFilter").value = "";
+        loadMessages(1);
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // USERS
+      // ═══════════════════════════════════════════════════════════
+      async function loadUsers(page = 1) {
+        usersCurrPage = page;
+        const search = document.getElementById("usersSearch").value.trim();
+        const status = document.getElementById("usersStatusFilter").value;
+        try {
+          const data = await apiFetch({
+            action: "users_list",
+            search,
+            status,
+            page,
+          });
+          if (!data.success) return;
+          document.getElementById("usersTotal").textContent = fmt(
+            data.pagination.total,
+          );
+          const tbody = document.getElementById("usersTableBody");
+          if (!data.users || !data.users.length) {
+            tbody.innerHTML =
+              '<tr><td colspan="7" class="empty-row">No users found</td></tr>';
+          } else {
+            tbody.innerHTML = data.users
+              .map(
+                (u) => `
+        <tr>
+          <td style="color:#6a737d;font-size:.78rem">${u.id}</td>
+          <td>
+            <div style="display:flex;align-items:center;gap:.7rem">
+              <div class="avatar-init">${esc((u.full_name || "?").charAt(0).toUpperCase())}</div>
+              <strong>${esc(u.full_name)}</strong>
+            </div>
+          </td>
+          <td style="color:#6a737d;font-size:.83rem">${esc(u.email)}</td>
+          <td><span style="background:#f3eeff;color:#6e45e2;padding:2px 8px;border-radius:6px;font-size:.78rem;font-weight:600">${u.order_count} orders</span></td>
+          <td>${statusBadge(u.is_active ? "active" : "inactive")}</td>
+          <td style="font-size:.75rem;color:#6a737d">${fmtDate(u.created_at)}</td>
+          <td style="display:flex;gap:.4rem;flex-wrap:wrap">
+            <button class="btn btn-sm ${u.is_active ? "btn-warning" : "btn-success"}" onclick="toggleUser(${u.id})">
+              <i class="fas fa-${u.is_active ? "ban" : "check"}"></i> ${u.is_active ? "Deactivate" : "Activate"}
+            </button>
+            <button class="btn btn-sm btn-danger" onclick="if(confirm('Permanently delete this user?')) deleteUser(${u.id})">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>`,
+              )
+              .join("");
+          }
+          document.getElementById("usersPagination").innerHTML =
+            buildPagination(data.pagination, "loadUsers");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      async function toggleUser(uid) {
+        const fd = new FormData();
+        fd.append("user_id", uid);
+        const data = await apiPost("user_toggle_active", fd);
+        if (data.success) showAlert("usersAlert", "success", data.message);
+        else showAlert("usersAlert", "error", data.error);
+        loadUsers(usersCurrPage);
+      }
+      async function deleteUser(uid) {
+        const fd = new FormData();
+        fd.append("user_id", uid);
+        const data = await apiPost("user_delete", fd);
+        if (data.success) showAlert("usersAlert", "success", data.message);
+        else showAlert("usersAlert", "error", data.error);
+        loadUsers(usersCurrPage);
+      }
+      function clearUsersFilters() {
+        document.getElementById("usersSearch").value = "";
+        document.getElementById("usersStatusFilter").value = "";
+        loadUsers(1);
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // REVIEWS
+      // ═══════════════════════════════════════════════════════════
+      async function loadReviews(page = 1) {
+        reviewsCurrPage = page;
+        const search = document.getElementById("reviewsSearch").value.trim();
+        const status = document.getElementById("reviewsStatusFilter").value;
+        const rating = document.getElementById("reviewsRatingFilter").value;
+        try {
+          const data = await apiFetch({
+            action: "reviews_list",
+            search,
+            status,
+            rating,
+            page,
+          });
+          if (!data.success) return;
+          document.getElementById("reviewsTotal").textContent = fmt(
+            data.pagination.total,
+          );
+          document.getElementById("reviewsAvg").textContent =
+            (data.avg_rating || 0) + "/5 ⭐";
+          const pb = document.getElementById("reviewsPendingBadge");
+          const aab = document.getElementById("approveAllBtn");
+          if (data.pending_count > 0) {
+            pb.style.display = "";
+            pb.textContent = data.pending_count + " pending";
+            aab.style.display = "";
+          } else {
+            pb.style.display = "none";
+            aab.style.display = "none";
+          }
+          const tbody = document.getElementById("reviewsTableBody");
+          if (!data.reviews || !data.reviews.length) {
+            tbody.innerHTML =
+              '<tr><td colspan="7" class="empty-row">No reviews found</td></tr>';
+          } else {
+            tbody.innerHTML = data.reviews
+              .map(
+                (r) => `
+        <tr>
+          <td>
+            <strong>${esc(r.reviewer_name)}</strong>
+            ${r.email ? `<div style="font-size:.75rem;color:#6a737d">${esc(r.email)}</div>` : ""}
+          </td>
+          <td style="font-size:.82rem;color:#6a737d">${esc(r.product || "—")}</td>
+          <td>${starsHtml(r.rating)} <span style="font-size:.75rem;color:#6a737d">(${r.rating})</span></td>
+          <td class="truncate" style="max-width:220px;font-size:.82rem">${esc((r.review_text || "").substring(0, 60))}…</td>
+          <td>
+            <select class="filter-input" style="padding:.25rem .4rem;font-size:.72rem" onchange="updateReviewStatus(${r.id},this.value)">
+              ${["pending", "approved", "rejected"].map((s) => `<option value="${s}" ${r.status === s ? "selected" : ""}>${s.charAt(0).toUpperCase() + s.slice(1)}</option>`).join("")}
+            </select>
+          </td>
+          <td style="font-size:.75rem;color:#6a737d">${fmtDate(r.created_at)}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" onclick="if(confirm('Delete this review?')) deleteReview(${r.id})"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>`,
+              )
+              .join("");
+          }
+          document.getElementById("reviewsPagination").innerHTML =
+            buildPagination(data.pagination, "loadReviews");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      async function updateReviewStatus(id, status) {
+        const fd = new FormData();
+        fd.append("review_id", id);
+        fd.append("status", status);
+        const data = await apiPost("review_update_status", fd);
+        if (data.success) showAlert("reviewsAlert", "success", data.message);
+        else showAlert("reviewsAlert", "error", data.error);
+        loadReviews(reviewsCurrPage);
+      }
+      async function deleteReview(id) {
+        const fd = new FormData();
+        fd.append("review_id", id);
+        const data = await apiPost("review_delete", fd);
+        if (data.success) showAlert("reviewsAlert", "success", data.message);
+        else showAlert("reviewsAlert", "error", data.error);
+        loadReviews(reviewsCurrPage);
+      }
+      async function approveAllReviews() {
+        if (!confirm("Approve all pending reviews?")) return;
+        const fd = new FormData();
+        const data = await apiPost("reviews_approve_all", fd);
+        if (data.success) showAlert("reviewsAlert", "success", data.message);
+        else showAlert("reviewsAlert", "error", data.error);
+        loadReviews(reviewsCurrPage);
+      }
+      function clearReviewsFilters() {
+        document.getElementById("reviewsSearch").value = "";
+        document.getElementById("reviewsStatusFilter").value = "";
+        document.getElementById("reviewsRatingFilter").value = "";
+        loadReviews(1);
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // NEWSLETTER
+      // ═══════════════════════════════════════════════════════════
+      async function loadNewsletter(page = 1) {
+        nlCurrPage = page;
+        const search = document.getElementById("nlSearch").value.trim();
+        try {
+          const data = await apiFetch({
+            action: "newsletter_list",
+            search,
+            page,
+          });
+          if (!data.success) return;
+          document.getElementById("nlTotal").textContent = fmt(
+            data.pagination.total,
+          );
+          const tbody = document.getElementById("nlTableBody");
+          if (!data.subscribers || !data.subscribers.length) {
+            tbody.innerHTML =
+              '<tr><td colspan="4" class="empty-row">No subscribers found</td></tr>';
+          } else {
+            let i = data.pagination.offset + 1;
+            tbody.innerHTML = data.subscribers
+              .map(
+                (s) => `
+        <tr>
+          <td style="color:#6a737d;font-size:.78rem">${i++}</td>
+          <td>
+            <i class="fas fa-envelope" style="color:#6e45e2;margin-right:.4rem;font-size:.8rem"></i>
+            <a href="mailto:${esc(s.email)}" style="color:#6e45e2;font-weight:500">${esc(s.email)}</a>
+          </td>
+          <td style="font-size:.78rem;color:#6a737d">${fmtDate(s.created_at)}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" onclick="if(confirm('Remove this subscriber?')) deleteSubscriber(${s.id})">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </td>
+        </tr>`,
+              )
+              .join("");
+          }
+          document.getElementById("nlPagination").innerHTML = buildPagination(
+            data.pagination,
+            "loadNewsletter",
+          );
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      async function addSubscriber() {
+        const email = document.getElementById("nlAddEmail").value.trim();
+        if (!email) return;
+        const fd = new FormData();
+        fd.append("email", email);
+        const data = await apiPost("newsletter_add", fd);
+        if (data.success) {
+          showAlert("nlAlert", "success", data.message);
+          document.getElementById("nlAddEmail").value = "";
+          loadNewsletter(1);
+        } else showAlert("nlAlert", "error", data.error);
+      }
+      async function deleteSubscriber(id) {
+        const fd = new FormData();
+        fd.append("sub_id", id);
+        const data = await apiPost("newsletter_delete", fd);
+        if (data.success) showAlert("nlAlert", "success", data.message);
+        else showAlert("nlAlert", "error", data.error);
+        loadNewsletter(nlCurrPage);
+      }
+      async function deleteAllSubscribers() {
+        const fd = new FormData();
+        const data = await apiPost("newsletter_delete_all", fd);
+        if (data.success) showAlert("nlAlert", "success", data.message);
+        else showAlert("nlAlert", "error", data.error);
+        loadNewsletter(1);
+      }
+      function clearNlFilters() {
+        document.getElementById("nlSearch").value = "";
+        loadNewsletter(1);
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // SETTINGS
+      // ═══════════════════════════════════════════════════════════
+      async function loadSettings() {
+        try {
+          const data = await apiFetch({ action: "settings_info" });
+          if (!data.success) return;
+          document.getElementById("si-php").textContent = data.php_version;
+          document.getElementById("si-db").textContent = data.db_name;
+          document.getElementById("si-dbsize").textContent =
+            data.db_size_kb + " KB";
+          document.getElementById("si-tables").textContent = data.table_count;
+          document.getElementById("si-session").textContent =
+            data.session_lifetime + " minutes";
+          document.getElementById("si-maxattempts").textContent =
+            data.max_attempts;
+          document.getElementById("si-lockout").textContent =
+            data.lockout_minutes + " minutes";
+          document.getElementById("si-time").textContent = data.server_time;
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      async function changePassword() {
+        const current = document.getElementById("currentPass").value;
+        const newP = document.getElementById("newPass").value;
+        const confirm = document.getElementById("confirmPass").value;
+        if (!current || !newP || !confirm) {
+          showAlert("settingsAlert", "error", "Please fill all fields.");
+          return;
+        }
+        const fd = new FormData();
+        fd.append("current_password", current);
+        fd.append("new_password", newP);
+        fd.append("confirm_password", confirm);
+        const data = await apiPost("change_password", fd);
+        if (data.success) {
+          showAlert("settingsAlert", "success", data.message);
+          if (data.logout) setTimeout(() => doLogout(), 1500);
+        } else {
+          showAlert("settingsAlert", "error", data.error);
+        }
+      }
+
+      // ═══════════════════════════════════════════════════════════
+      // BOOTSTRAP
+      // ═══════════════════════════════════════════════════════════
+      window.addEventListener("DOMContentLoaded", init);
+    </script>
+  </body>
+</html>

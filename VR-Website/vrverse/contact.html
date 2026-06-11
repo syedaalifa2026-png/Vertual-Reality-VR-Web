@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VRverse | Contact Our Team</title>
+  <meta name="description"
+    content="Get in touch with VRverse - We're here to help you step into the future of virtual reality.">
+  <meta name="keywords" content="VR support, contact VR, virtual reality help, VRverse">
+  <meta property="og:title" content="VRverse | Contact Us">
+  <meta property="og:description" content="Reach out to our VR specialists for inquiries and support.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="VR-logo.png" type="image/png">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6e45e2;
+      --primary-light: #a682ff;
+      --primary-dark: #4d2bb5;
+      --secondary: #00c9c1;
+      --secondary-light: #5ce0d8;
+      --accent: #ff6b6b;
+      --accent-light: #ff8e8e;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --light-gray: #f0f2f5;
+      --medium-gray: #e1e4e8;
+      --dark-gray: #6a737d;
+      --dark: #0f0f15;
+      --darker: #0a0a0f;
+      --text: #1a1a2e;
+      --text-light: #4a5568;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --card-radius: 16px;
+      --glow: 0 0 15px rgba(110, 69, 226, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #1a1a2e;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* Header Styles */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 2.3rem 1%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.98);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    header.scrolled {
+      padding: 2.3rem 5%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      z-index: 1002;
+    }
+
+    .logo img {
+      height: 100px;
+      transition: var(--transition);
+    }
+
+    .logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-left li,
+    .nav-right li {
+      list-style: none;
+    }
+
+    nav a {
+      color: #2d3748;
+      font-weight: 500;
+      padding: 0.3rem 0.5rem;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: transparent;
+      font-weight: 500;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.95rem;
+      color: #2d3748;
+      transition: var(--transition);
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+    }
+
+    .icon-btn i {
+      font-size: 1.1rem;
+    }
+
+    .icon-btn:hover {
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #1a1a2e;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1002;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    /* Contact Page Hero */
+    .contact-hero {
+      height: 60vh;
+      min-height: 400px;
+      background: linear-gradient(135deg, #e9e5ff 0%, #f5f0ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      margin-top: 0;
+      padding-top: 120px;
+    }
+
+    .contact-hero-content {
+      max-width: 800px;
+      padding: 0 5%;
+      z-index: 2;
+    }
+
+    .contact-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .contact-hero p {
+      font-size: 1rem;
+      color: #4a5568;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== FIXED: Contact Grid Section ===== */
+    .contact-grid-section {
+      padding: 2.5rem 5%;
+      /* medium padding top/bottom, side padding added */
+      background: #ffffff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: start;
+      /* FIXED: prevents right column stretching */
+    }
+
+    .contact-grid>div:last-child {
+      max-width: 520px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ===== FIXED: Info Cards — smaller/medium size ===== */
+    .info-card {
+      background: var(--light-gray);
+      border-radius: 20px;
+      padding: 1.5rem;
+      /* reduced from 2rem */
+      margin-bottom: 1.5rem;
+      /* reduced from 2rem */
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .info-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .info-icon {
+      width: 50px;
+      /* reduced from 60px */
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      /* reduced from 1.5rem */
+    }
+
+    .info-icon i {
+      font-size: 1.4rem;
+      /* reduced from 1.8rem */
+      color: white;
+    }
+
+    .info-card h3 {
+      font-size: 1.15rem;
+      /* reduced from 1.4rem */
+      margin-bottom: 0.8rem;
+      color: var(--primary-dark);
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+      /* slightly tighter */
+    }
+
+    .info-row i {
+      width: 20px;
+      color: var(--primary);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .info-row span,
+    .info-row a {
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 0.88rem;
+      /* slightly smaller */
+    }
+
+    .info-row a:hover {
+      color: var(--primary);
+    }
+
+    .business-hours {
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--medium-gray);
+    }
+
+    .business-hours li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.35rem 0;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    /* Map Container */
+    .map-container {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin: 0.8rem 0 0.5rem 0;
+      height: 180px;
+      /* reduced from 220px */
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ===== FIXED: Form Card — medium size, no excess space ===== */
+    .form-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      /* reduced from 1.5rem (was consistent) */
+      box-shadow: var(--shadow);
+      border: 1px solid var(--medium-gray);
+      width: 100%;
+      margin: 0;
+      /* FIXED: removed auto margins causing extra space */
+    }
+
+    .form-card h2 {
+      font-size: 1.3rem;
+      /* reduced from 1.5rem */
+      margin-bottom: 0.4rem;
+      color: var(--primary-dark);
+    }
+
+    .form-card p {
+      margin-bottom: 1.2rem;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.85rem;
+      /* tighter spacing */
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.82rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      /* slightly tighter */
+      border: 2px solid var(--medium-gray);
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      transition: var(--transition);
+      background: var(--light);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(110, 69, 226, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+      /* reduced from 100px */
+    }
+
+    .form-group:last-of-type {
+      margin-bottom: 0.85rem;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      width: 100%;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 5rem 5%;
+      background: var(--light-gray);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+
+    .section-title p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .faq-list {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      border: 1px solid var(--medium-gray);
+    }
+
+    .faq-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary-light);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question h3 {
+      font-size: 1.05rem;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .faq-question i {
+      color: var(--primary);
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 150px;
+      margin-top: 1rem;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer p {
+      margin: 0;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--medium-gray);
+    }
+
+    /* Footer */
+    footer {
+      background: #ffffff;
+      padding: 4rem 5% 3rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      text-decoration: none;
+    }
+
+    .footer-logo img {
+      height: 100px;
+    }
+
+    .footer-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-about p {
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+      color: #1a1a2e;
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-links h3::after,
+    .footer-contact h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      color: #4a5568;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .footer-contact p,
+    .footer-contact li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+      color: #4a5568;
+      font-size: 0.9rem;
+    }
+
+    .footer-contact i {
+      color: var(--primary);
+      width: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: var(--primary);
+      transition: var(--transition);
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .social-icon .tooltip {
+      position: absolute;
+      top: -35px;
+      font-size: 0.7rem;
+      background: #1a1a2e;
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 25px;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .social-icon:hover .tooltip {
+      opacity: 1;
+      top: -42px;
+    }
+
+    .social-icon.facebook:hover {
+      background: #3b5998;
+      color: white;
+    }
+
+    .social-icon.twitter:hover {
+      background: #1da1f2;
+      color: white;
+    }
+
+    .social-icon.instagram:hover {
+      background: #e1306c;
+      color: white;
+    }
+
+    .social-icon.youtube:hover {
+      background: #ff0000;
+      color: white;
+    }
+
+    .social-icon.linkedin:hover {
+      background: #0077b5;
+      color: white;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 1rem;
+      max-width: 100%;
+    }
+
+    .newsletter-form input {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+      border-radius: 50px 0 0 50px;
+      padding: 0.6rem 1rem;
+      flex: 1;
+      font-size: 0.85rem;
+    }
+
+    .newsletter-form button {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 0 50px 50px 0;
+      color: white;
+      padding: 0 1.2rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #e2e8f0;
+      color: #64748b;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+      box-shadow: var(--glow);
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 992px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 1.2rem;
+        z-index: 1005;
+      }
+
+      .logo {
+        position: relative;
+        left: 0;
+        transform: none;
+        margin: 0 auto;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 350px;
+        height: 100vh;
+        background: #ffffff;
+        padding: 6rem 2rem 2rem;
+        transition: var(--transition);
+        z-index: 1001;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        display: block;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      .nav-left,
+      .nav-right {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .contact-hero h1 {
+        font-size: 2rem;
+      }
+
+      .section-title h2 {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Cart Icon Wrapper */
+    .cart-icon-wrapper {
+      position: relative;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem 0.5rem;
+      color: #2d3748;
+      transition: var(--transition);
+    }
+
+    .cart-icon-wrapper i {
+      font-size: 1.1rem;
+    }
+
+    .cart-icon-wrapper:hover {
+      color: var(--primary);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--accent, #ff6b6b);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.1rem 0.4rem;
+      border-radius: 50%;
+      min-width: 18px;
+      text-align: center;
+      display: none;
+      line-height: 1.2;
+    }
+
+    .cart-badge.show {
+      display: block;
+    }
+
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 380px;
+      max-width: 90vw;
+      height: 100vh;
+      background: white;
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+      z-index: 1100;
+      transition: var(--transition);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .cart-sidebar.open {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--medium-gray);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .cart-header h3 {
+      font-size: 1.4rem;
+    }
+
+    .close-cart {
+      background: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .cart-empty-msg {
+      text-align: center;
+      color: gray;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      background: #f0f2f5;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-item-img i {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .cart-item-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .cart-item-price {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .cart-item-remove {
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+      display: inline-block;
+      background: none;
+      border: none;
+    }
+
+    .cart-qty-btn {
+      background: var(--primary);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+
+    .cart-qty-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .cart-total {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--medium-gray);
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .checkout-btn {
+      margin-top: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1050;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .cart-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-items::-webkit-scrollbar {
+      display: block;
+      width: 5px;
+    }
+
+    .cart-items::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+
+    .cart-items:hover::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .cart-qty-minus,
+    .cart-qty-plus {
+      background: #6e45e2;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">
+    <div class="logo"><img src="VR-logo.png" alt="VR Logo"><span>VRverse</span></div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+    <nav id="mainNav">
+      <ul class="nav-left">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About VR</a></li>
+        <li><a href="shop.html">Shop</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li class="cart-icon-wrapper" id="cartIcon">
+          <i class="fas fa-shopping-cart"></i> Cart
+          <span class="cart-badge" id="cartBadge">0</span>
+        </li>
+        <li class="nav-right-item"><a title="Login" href="login.html"><i class="fas fa-user-circle"></i> Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button title="Close Cart" class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItemsContainer">
+      <p class="cart-empty-msg">Your cart is empty</p>
+    </div>
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cartTotalPrice">৳0.00</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+  </div>
+
+  <section class="contact-hero">
+    <div class="contact-hero-content" data-aos="fade-up">
+      <h1>Reach Out to VRverse</h1>
+      <p>Have questions? Our VR specialists are ready to assist you. Let's shape the future together.</p>
+    </div>
+  </section>
+
+  <div class="contact-grid-section">
+    <div class="contact-grid">
+      <div>
+        <div class="info-card" data-aos="fade-right">
+          <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h3>Visit Our HQ</h3>
+          <div class="info-row"><i class="fas fa-location-dot"></i> <span>123 VR Road, Banani, Dhaka 1213,
+              Bangladesh</span></div>
+          <div class="map-container">
+            <iframe title="VRverse Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.902123456789!2d90.406566!3d23.786055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70e15e0c3b7%3A0x8b3f8f8b8b8b8b8b!2sBanani%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1645000000000!5m2!1sen!2sbd"
+              allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <div class="info-card" data-aos="fade-right" data-aos-delay="100">
+          <div class="info-icon"><i class="fas fa-headset"></i></div>
+          <h3>Support & Inquiries</h3>
+          <div class="info-row"><i class="fas fa-phone-alt"></i> <a href="tel:+8801712345678">+880 1712 345678</a></div>
+          <div class="info-row"><i class="fas fa-envelope"></i> <a href="mailto:info@vrverse.com">info@vrverse.com</a>
+          </div>
+          <div class="info-row"><i class="fas fa-clock"></i> <span>Support: 24/7 Online</span></div>
+          <div class="business-hours">
+            <ul>
+              <li><span>Saturday - Thursday:</span><span>10:00 AM - 8:00 PM</span></li>
+              <li><span>Friday:</span><span>Closed</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="form-card" data-aos="fade-left">
+        <h2>Send a Message</h2>
+        <p>Fill out the form below and our team will get back to you within 24 hours.</p>
+        <form id="contactForm">
+          <div class="form-group"><label for="name">Full Name *</label><input type="text" id="name" name="name"
+              placeholder="Your Name" required></div>
+          <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email"
+              placeholder="your email" required></div>
+          <div class="form-group"><label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="VR Product Support">VR Product Support</option>
+              <option value="Business Partnership">Business Partnership</option>
+              <option value="Feedback">Feedback</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="message">Your Message *</label><textarea id="message" name="message"
+              placeholder="Tell us how we can help you..." required></textarea></div>
+          <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Frequently Asked Questions</h2>
+        <p>Quick answers to common questions about our VR products and services</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" data-aos="fade-up">
+          <div class="faq-question">
+            <h3>❓ What is your return policy for VR headsets?</h3><i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We offer a 30-day hassle-free return policy on all VR headsets and accessories. Items must be in original
+              condition.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up">
+          <div class="faq-question">
+            <h3>❓ Do you provide international shipping?</h3><i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we ship worldwide! Delivery times vary by region, typically 5-12 business days.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up">
+          <div class="faq-question">
+            <h3>❓ How can I track my order?</h3><i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>You'll receive a tracking link via email and SMS after shipping. Real-time updates available.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up">
+          <div class="faq-question">
+            <h3>❓ Is technical support available after purchase?</h3><i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! Free lifetime support via chat, email, or phone. We're here to help 24/7.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up">
+          <div class="faq-question">
+            <h3>❓ Do you offer warranty on VR products?</h3><i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, 1-year manufacturer warranty covering hardware defects. Extended plans available.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about"><a href="index.html" class="footer-logo"><img src="VR-logo.png"
+              alt="VRverse Logo"><span>VRverse</span></a>
+          <p>Delivering transformative virtual reality experiences that inspire, educate, and empower.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i><span
+                class="tooltip">Facebook</span></a>
+            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i><span
+                class="tooltip">Twitter</span></a>
+            <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i><span
+                class="tooltip">Instagram</span></a>
+            <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i><span
+                class="tooltip">YouTube</span></a>
+            <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i><span
+                class="tooltip">LinkedIn</span></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="index.html#about"><i class="fas fa-chevron-right"></i> About VR</a></li>
+            <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
+            <li><a href="review.html"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Customer Service</h3>
+          <ul>
+            <li><a href="policy.html#privacy"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+            <li><a href="policy.html#terms"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
+            <li><a href="policy.html#return"><i class="fas fa-chevron-right"></i> Return Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> 123 VR Road, Banani, Dhaka 1213</li>
+            <li><i class="fas fa-phone-alt"></i> +880 1712 345678</li>
+            <li><i class="fas fa-envelope"></i> info@vrverse.com</li>
+            <li><i class="fas fa-clock"></i> Open 10AM-8PM (Sat-Thu)</li>
+          </ul>
+          <h3>Newsletter</h3>
+          <div class="newsletter-form"><input type="email" placeholder="Your email address"><button type="submit"
+              aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button></div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 VR Nexus. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 100 });
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name')?.value.trim() || '';
+        const email = document.getElementById('email')?.value.trim() || '';
+        const subject = document.getElementById('subject')?.value.trim() || '';
+        const message = document.getElementById('message')?.value.trim() || '';
+
+        if (!name || !email || !message) {
+          showToast('Please fill all required fields.', 'error');
+          return;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showToast('Please enter a valid email address.', 'error');
+          return;
+        }
+
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const originalHTML = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+
+        try {
+          const res = await fetch('php/save_contact.php', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, subject, message })
+          });
+          const data = await res.json();
+          showToast(data.message, data.success ? 'success' : 'error');
+          if (data.success) contactForm.reset();
+        } catch (err) {
+          showToast('Network error. Please check your connection and try again.', 'error');
+        } finally {
+          submitBtn.innerHTML = originalHTML;
+          submitBtn.disabled = false;
+        }
+      });
+    }
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const questionBtn = item.querySelector('.faq-question');
+      if (questionBtn) {
+        questionBtn.addEventListener('click', () => {
+          const wasActive = item.classList.contains('active');
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+          if (!wasActive) item.classList.add('active');
+        });
+      }
+    });
+  </script>
+  <script src="auth.js"></script>
+</body>
+
+</html>

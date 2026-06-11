@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRverse | Privacy, Terms & Return Policy</title>
+    <meta name="description"
+        content="Read VRverse's official privacy policy, terms and conditions, and return policy for a secure and transparent experience.">
+    <meta name="keywords" content="VR policy, privacy policy, terms and conditions, return policy, VRverse">
+    <link rel="icon" href="VR-logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6e45e2;
+            --primary-light: #a682ff;
+            --primary-dark: #4d2bb5;
+            --secondary: #00c9c1;
+            --secondary-light: #5ce0d8;
+            --accent: #ff6b6b;
+            --white: #ffffff;
+            --light: #f8f9fa;
+            --light-gray: #f0f2f5;
+            --medium-gray: #e1e4e8;
+            --dark-gray: #6a737d;
+            --text: #1a1a2e;
+            --text-light: #4a5568;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --card-radius: 24px;
+            --glow: 0 0 15px rgba(110, 69, 226, 0.3);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2.3rem 1%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        header.scrolled {
+            padding: 2.3rem 5%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            z-index: 1002;
+        }
+
+        .logo img {
+            height: 100px;
+            transition: var(--transition);
+        }
+
+        .logo span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation Styles - No Underline */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-left li,
+        .nav-right li {
+            list-style: none;
+        }
+
+        nav a {
+            color: #2d3748;
+            font-weight: 500;
+            padding: 0.3rem 0.5rem;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Remove all focus outlines */
+        nav a:focus,
+        nav a:active,
+        .nav-right-item:focus,
+        .nav-right-item:active,
+        .cart-icon-wrapper:focus,
+        .cart-icon-wrapper:active,
+        .mobile-menu-btn:focus,
+        .tab-btn:focus,
+        button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Cart Icon Styles */
+        .cart-icon-wrapper {
+            position: relative;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.5rem;
+            color: #2d3748;
+            transition: var(--transition);
+        }
+
+        .cart-icon-wrapper:hover {
+            color: var(--primary);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.1rem 0.4rem;
+            border-radius: 50%;
+            min-width: 18px;
+            text-align: center;
+            display: none;
+        }
+
+        .cart-badge.show {
+            display: block;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #1a1a2e;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1002;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .policy-hero {
+            background: linear-gradient(125deg, #f0eaff 0%, #e6f7ff 100%);
+            padding: 180px 5% 80px;
+            text-align: center;
+        }
+
+        .policy-hero h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .policy-hero p {
+            font-size: 1rem;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 0 5% 3rem;
+        }
+
+        .tab-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .tab-btn i {
+            font-size: 1.1rem;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: var(--medium-gray);
+            transform: translateY(-2px);
+        }
+
+        /* Policy Content */
+        .policy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% 5rem;
+        }
+
+        .policy-card {
+            background: white;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--medium-gray);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .policy-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            padding: 2rem;
+            color: white;
+        }
+
+        .policy-header h2 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .policy-body {
+            padding: 2rem;
+        }
+
+        .policy-section {
+            margin-bottom: 2rem;
+        }
+
+        .policy-section h3 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .policy-section h3 i {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .policy-section p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .policy-section ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .policy-section ul li {
+            margin-bottom: 0.7rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .policy-section ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .last-updated {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--medium-gray);
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            text-align: right;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 380px;
+            max-width: 90vw;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--medium-gray);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-header h3 {
+            font-size: 1.4rem;
+        }
+
+        .close-cart {
+            background: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: #6a737d;
+            outline: none !important;
+            box-shadow: none !important;
+            border: none !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        .close-cart:hover {
+            color: var(--primary);
+        }
+
+        /* Remove default focus ring for all interactive elements */
+        *:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .cart-empty-msg {
+            text-align: center;
+            color: gray;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .cart-item-img {
+            width: 60px;
+            height: 60px;
+            background: #f0f2f5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-item-img i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .cart-item-remove {
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            display: inline-block;
+            background: none;
+            border: none;
+        }
+
+        .cart-total {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--medium-gray);
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .checkout-btn {
+            margin-top: 1rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Footer */
+        footer {
+            background: #ffffff;
+            padding: 4rem 10% 3rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+
+        .footer-logo img {
+            height: 100px;
+        }
+
+        .footer-logo span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-about p {
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: var(--primary);
+            transition: var(--transition);
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+            /* underline remove */
+            outline: none;
+            /* focus outline remove */
+        }
+
+        .social-icon:focus,
+        .social-icon:active {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .social-icon .tooltip {
+            position: absolute;
+            top: -35px;
+            font-size: 0.7rem;
+            background: #1a1a2e;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 25px;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .social-icon:hover .tooltip {
+            opacity: 1;
+            top: -42px;
+        }
+
+        .social-icon.facebook:hover {
+            background: #3b5998;
+            color: white;
+        }
+
+        .social-icon.twitter:hover {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .social-icon.instagram:hover {
+            background: #e1306c;
+            color: white;
+        }
+
+        .social-icon.youtube:hover {
+            background: #ff0000;
+            color: white;
+        }
+
+        .social-icon.linkedin:hover {
+            background: #0077b5;
+            color: white;
+        }
+
+        .footer-links h3,
+        .footer-contact h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .footer-links h3::after,
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: #4a5568;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border-radius: 50px 0 0 50px;
+            border: 1px solid #e2e8f0;
+            background: #f1f5f9;
+        }
+
+        .newsletter-form button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 0 50px 50px 0;
+            color: white;
+            cursor: pointer;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.4s;
+            z-index: 999;
+            box-shadow: var(--glow);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 5%;
+                top: 1.2rem;
+            }
+
+            .logo {
+                position: relative;
+                left: 0;
+                transform: none;
+                margin: 0 auto;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 350px;
+                height: 100vh;
+                background: white;
+                padding: 6rem 2rem;
+                transition: 0.4s;
+                z-index: 1001;
+                display: block;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            .nav-left,
+            .nav-right {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .policy-hero h1 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-btn {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        .policy-hidden {
+            display: none;
+        }
+
+        .policy-ol {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Example: Show scrollbar only on hover */
+        .cart-items::-webkit-scrollbar {
+            display: block;
+            width: 5px;
+        }
+
+        .cart-items::-webkit-scrollbar-thumb {
+            background-color: transparent;
+        }
+
+        .cart-items:hover::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-qty-minus,
+        .cart-qty-plus {
+            background: #6e45e2;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="logo"><img src="VR-logo.png" alt="VR Logo"><span>VRverse</span></div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        <nav id="mainNav">
+            <ul class="nav-left">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About VR</a></li>
+                <li><a href="shop.html">Shop</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="review.html">Reviews</a></li>
+                <li class="cart-icon-wrapper" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </li>
+                <li class="nav-right-item"><a title="Login" href="login.html"><i class="fas fa-user-circle"></i>
+                        Login</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button title="Close Cart" class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <p>Cart is empty</p>
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotalPrice">৳0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+
+    <section class="policy-hero">
+        <h1 data-aos="fade-up">Legal & Policies</h1>
+        <p data-aos="fade-up" data-aos-delay="100">Your trust matters. Read our official policies to understand how we
+            protect your rights.</p>
+    </section>
+
+    <!-- Tab Navigation -->
+    <div class="tab-nav" data-aos="fade-up" data-aos-delay="150">
+        <button class="tab-btn active" data-tab="privacy"><i class="fas fa-shield-alt"></i> Privacy Policy</button>
+        <button class="tab-btn" data-tab="terms"><i class="fas fa-file-contract"></i> Terms & Conditions</button>
+        <button class="tab-btn" data-tab="return"><i class="fas fa-undo-alt"></i> Return Policy</button>
+    </div>
+
+    <!-- Privacy Policy Content -->
+    <div class="policy-container" id="privacyContent" data-aos="fade-up">
+        <div class="policy-card">
+            <div class="policy-header">
+                <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+                <p>Last Updated: January 1, 2025</p>
+            </div>
+            <div class="policy-body">
+                <div class="policy-section">
+                    <h3><i class="fas fa-info-circle"></i> Information We Collect</h3>
+                    <p>At VRverse, we respect your privacy. We collect information to provide better services to all our
+                        users. The types of information we collect include:</p>
+                    <ul>
+                        <li><strong>Personal Information:</strong> Name, email address, phone number, shipping address,
+                            and payment details when you make a purchase.</li>
+                        <li><strong>Usage Data:</strong> Information about how you interact with our website, products,
+                            and services.</li>
+                        <li><strong>Device Information:</strong> IP address, browser type, operating system, and VR
+                            headset specifications.</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-chart-line"></i> How We Use Your Information</h3>
+                    <p>We use the information we collect for the following purposes:</p>
+                    <ul>
+                        <li>Process and fulfill your orders, including shipping and delivery updates.</li>
+                        <li>Communicate with you about your account, orders, and customer support.</li>
+                        <li>Improve and personalize your VR experience on our platform.</li>
+                        <li>Send promotional offers, newsletters, and VR-related updates (you can opt out anytime).</li>
+                        <li>Prevent fraud, enhance security, and comply with legal obligations.</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-share-alt"></i> Sharing Your Information</h3>
+                    <p>We do not sell your personal information. We may share your data with:</p>
+                    <ul>
+                        <li><strong>Service Providers:</strong> Payment processors, shipping carriers, and IT support
+                            vendors.</li>
+                        <li><strong>Legal Requirements:</strong> If required by law or to protect our rights.</li>
+                        <li><strong>Business Transfers:</strong> In case of merger, acquisition, or sale of assets.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-cookie-bite"></i> Cookies & Tracking</h3>
+                    <p>We use cookies and similar technologies to enhance your browsing experience, analyze site
+                        traffic, and personalize content. You can control cookie preferences through your browser
+                        settings.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-user-secret"></i> Your Rights</h3>
+                    <p>Depending on your location, you may have rights including:</p>
+                    <ul>
+                        <li>Access, correct, or delete your personal information.</li>
+                        <li>Object to or restrict certain types of data processing.</li>
+                        <li>Request data portability.</li>
+                        <li>Withdraw consent at any time.</li>
+                    </ul>
+                    <p>To exercise these rights, contact us at <strong>privacy@vrverse.com</strong>.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-lock"></i> Data Security</h3>
+                    <p>We implement industry-standard security measures including SSL encryption, firewalls, and regular
+                        security audits to protect your data from unauthorized access, alteration, or destruction.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-child"></i> Children's Privacy</h3>
+                    <p>Our services are not directed to children under 13. We do not knowingly collect personal
+                        information from children. If you believe a child has provided us with data, please contact us.
+                    </p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-globe"></i> International Data Transfers</h3>
+                    <p>Your information may be transferred to and processed in countries outside your residence. We
+                        ensure appropriate safeguards are in place to protect your data.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+                    <p>For privacy-related questions or concerns, email us at <strong>privacy@vrverse.com</strong> or
+                        call <strong>+880 1712 345678</strong>.</p>
+                </div>
+
+                <div class="last-updated">
+                    <i class="fas fa-clock"></i> This Privacy Policy was last updated on January 1, 2025. We may update
+                    it periodically; any changes will be posted here.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Content (initially hidden) -->
+    <div class="policy-container" id="termsContent" class="policy-hidden" data-aos="fade-up">
+        <div class="policy-card">
+            <div class="policy-header">
+                <h2><i class="fas fa-file-contract"></i> Terms & Conditions</h2>
+                <p>Last Updated: January 1, 2025</p>
+            </div>
+            <div class="policy-body">
+                <div class="policy-section">
+                    <h3><i class="fas fa-handshake"></i> Agreement to Terms</h3>
+                    <p>By accessing or using VRverse's website, products, or services, you agree to be bound by these
+                        Terms & Conditions. If you disagree with any part, please do not use our services.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-user-plus"></i> Account Registration</h3>
+                    <ul>
+                        <li>You must be at least 18 years old to create an account.</li>
+                        <li>You are responsible for maintaining the confidentiality of your login credentials.</li>
+                        <li>You agree to provide accurate and complete information during registration.</li>
+                        <li>You are liable for all activities that occur under your account.</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-shopping-cart"></i> Orders & Payments</h3>
+                    <ul>
+                        <li>All orders are subject to product availability and price confirmation.</li>
+                        <li>We accept payments via bKash, Nagad, Rocket, Visa, Upay, and Cash on Delivery.</li>
+                        <li>Prices are listed in Bangladeshi Taka (BDT) and include applicable taxes unless stated
+                            otherwise.</li>
+                        <li>We reserve the right to cancel any order due to suspected fraud, pricing errors, or stock
+                            unavailability.</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-truck"></i> Shipping & Delivery</h3>
+                    <ul>
+                        <li>Delivery times are estimates and not guaranteed.</li>
+                        <li>Shipping charges vary by location as displayed during checkout.</li>
+                        <li>Risk of loss passes to you upon delivery of products.</li>
+                        <li>International shipping is currently not available.</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-undo-alt"></i> Returns & Refunds</h3>
+                    <p>Please refer to our <strong>Return Policy</strong> (separate tab) for detailed information on
+                        returns, exchanges, and refunds.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-code-branch"></i> Intellectual Property</h3>
+                    <p>All content on this website including logos, images, text, graphics, and software is the
+                        property of VRverse and protected by copyright laws. You may not reproduce, distribute, or
+                        modify any content without our written consent.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-gavel"></i> Prohibited Conduct</h3>
+                    <p>You agree not to:</p>
+                    <ul>
+                        <li>Use our services for any illegal purpose.</li>
+                        <li>Attempt to gain unauthorized access to our systems.</li>
+                        <li>Interfere with the proper functioning of the website.</li>
+                        <li>Harass, abuse, or harm other users.</li>
+                        <li>Resell VR products without authorization.</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Disclaimer of Warranties</h3>
+                    <p>Our services are provided "as is" without warranties of any kind. We do not guarantee that the
+                        service will be uninterrupted, error-free, or completely secure. VR headset performance may
+                        vary based on individual physical conditions and environmental factors.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-balance-scale"></i> Limitation of Liability</h3>
+                    <p>To the maximum extent permitted by law, VRverse shall not be liable for any indirect,
+                        incidental, or consequential damages arising from your use of our products or services. Our
+                        total liability shall not exceed the amount you paid for the product in question.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-gavel"></i> Governing Law</h3>
+                    <p>These Terms shall be governed by and construed in accordance with the laws of Bangladesh,
+                        without regard to conflict of law principles. Any disputes shall be resolved exclusively in the
+                        courts of Dhaka, Bangladesh.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-edit"></i> Changes to Terms</h3>
+                    <p>We may modify these Terms at any time. Continued use of our services after changes constitutes
+                        acceptance of the new Terms. Material changes will be notified via email or website notice.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-envelope"></i> Contact</h3>
+                    <p>For questions about these Terms, contact us at <strong>legal@vrverse.com</strong>.</p>
+                </div>
+
+                <div class="last-updated">
+                    <i class="fas fa-clock"></i> Terms & Conditions effective as of January 1, 2025.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Return Policy Content (initially hidden) -->
+    <div class="policy-container" id="returnContent" class="policy-hidden" data-aos="fade-up">
+        <div class="policy-card">
+            <div class="policy-header">
+                <h2><i class="fas fa-undo-alt"></i> Return & Refund Policy</h2>
+                <p>Last Updated: January 1, 2025</p>
+            </div>
+            <div class="policy-body">
+                <div class="policy-section">
+                    <h3><i class="fas fa-clock"></i> 30-Day Return Window</h3>
+                    <p>You have <strong>30 calendar days</strong> from the date of delivery to initiate a return for
+                        eligible products. Items returned after 30 days will not be accepted unless defective.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-check-circle"></i> Eligibility Criteria</h3>
+                    <p>To be eligible for a return, the product must be:</p>
+                    <ul>
+                        <li>In unused, original condition with all accessories, cables, and packaging intact.</li>
+                        <li>Not damaged due to misuse, drops, liquid damage, or unauthorized modifications.</li>
+                        <li>Accompanied by proof of purchase (order number or receipt).</li>
+                        <li>Returned with the original box and protective materials.</li>
+                    </ul>
+                    <p><strong>Non-returnable items:</strong> Digital downloads, gift cards, opened software/games,
+                        hygiene-sensitive accessories (face covers, foam inserts) unless defective.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-dollar-sign"></i> Refund Process</h3>
+                    <ul>
+                        <li><strong>Full Refund:</strong> For eligible returns within 30 days, we will refund the full
+                            purchase price excluding original shipping fees.</li>
+                        <li><strong>Partial Refund:</strong> Items returned with missing accessories or damaged
+                            packaging may receive a partial refund (up to 30% deduction).</li>
+                        <li><strong>Processing Time:</strong> Refunds are processed within 5-7 business days after we
+                            inspect the returned product.</li>
+                        <li><strong>Refund Method:</strong> Refunds are issued via the original payment method (bKash,
+                            Nagad, Rocket, Visa, Upay) or Cash on Delivery refunds via bank transfer.</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-tools"></i> Defective or Damaged Products</h3>
+                    <p>If you receive a defective, damaged, or incorrect product:</p>
+                    <ul>
+                        <li>Contact us within <strong>7 days</strong> of delivery at
+                            <strong>support@vrverse.com</strong>
+                            with photos/videos of the issue.
+                        </li>
+                        <li>We will arrange a free pickup and replacement or full refund including return shipping
+                            costs.</li>
+                        <li>Manufacturing defects are covered under the manufacturer's warranty (if applicable).</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-exchange-alt"></i> Exchanges</h3>
+                    <p>We offer exchanges for the same product or store credit within 30 days. To exchange for a
+                        different product, simply return the original item and place a new order. Shipping charges for
+                        exchanges may apply unless the item is defective.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-truck-moving"></i> Return Shipping</h3>
+                    <ul>
+                        <li><strong>Customer-initiated returns:</strong> You are responsible for return shipping costs
+                            unless the item is defective or incorrect.</li>
+                        <li><strong>Defective/incorrect items:</strong> We provide a prepaid shipping label or arrange
+                            courier pickup free of charge.</li>
+                        <li>We recommend using a trackable shipping method as we are not responsible for lost returns.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-headset"></i> How to Initiate a Return</h3>
+                    <ol class="policy-ol">
+                        <li>Email our support team at <strong>returns@vrverse.com</strong> with your order number and
+                            reason for return.</li>
+                        <li>Wait for return authorization and shipping instructions (within 48 hours).</li>
+                        <li>Pack the product securely in original packaging.</li>
+                        <li>Ship to our return address: <strong>VRverse Returns, 123 VR Road, Banani, Dhaka 1213,
+                                Bangladesh</strong>.</li>
+                        <li>Once we receive and inspect the item (3-5 business days), your refund will be processed.
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-hourglass-half"></i> Refund Timeline</h3>
+                    <p>After we approve your return, refunds typically appear:</p>
+                    <ul>
+                        <li>bKash/Nagad/Rocket: 1-2 business days</li>
+                        <li>Visa Card: 3-7 business days</li>
+                        <li>Cash on Delivery (bank transfer): 5-10 business days</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-gift"></i> Sale & Promotional Items</h3>
+                    <p>Sale items are eligible for return under the same 30-day policy. However, any free gifts or
+                        bonus items must also be returned to receive a full refund.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-phone-alt"></i> Contact Support</h3>
+                    <p>For return assistance, call us at <strong>+880 1712 345678</strong> (10AM - 8PM, Sat-Thu) or
+                        email <strong>support@vrverse.com</strong>. We respond within 24 hours.</p>
+                </div>
+
+                <div class="last-updated">
+                    <i class="fas fa-clock"></i> Return Policy effective for all orders placed after January 1, 2025.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <img src="VR-logo.png" alt="VRverse Logo">
+                        <span>VRverse</span>
+                    </a>
+                    <p>Delivering transformative virtual reality experiences that inspire, educate, and empower.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i><span
+                                class="tooltip">Facebook</span></a>
+                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i><span
+                                class="tooltip">Twitter</span></a>
+                        <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i><span
+                                class="tooltip">Instagram</span></a>
+                        <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i><span
+                                class="tooltip">YouTube</span></a>
+                        <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i><span
+                                class="tooltip">LinkedIn</span></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#about"><i class="fas fa-chevron-right"></i> About VR</a></li>
+                        <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
+                        <li><a href="review.html"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="policy.html#privacy"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="policy.html#terms"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
+                        <li><a href="policy.html#return"><i class="fas fa-chevron-right"></i> Return Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 VR Road, Banani, Dhaka 1213</li>
+                        <li><i class="fas fa-phone-alt"></i> +880 1712 345678</li>
+                        <li><i class="fas fa-envelope"></i> info@vrverse.com</li>
+                        <li><i class="fas fa-clock"></i> Open 10AM-8PM (Sat-Thu)</li>
+                    </ul>
+                    <h3>Newsletter</h3>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 VRverse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Shared JavaScript Files (Centralized System) -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/utils.js"></script>
+
+    <!-- Page Specific Script for Policy Page -->
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 800, once: true, offset: 100 });
+
+        // Tab switching logic for Policy Page
+        const privacyContent = document.getElementById('privacyContent');
+        const termsContent = document.getElementById('termsContent');
+        const returnContent = document.getElementById('returnContent');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+
+        function showTab(tabId) {
+            if (privacyContent) privacyContent.style.display = 'none';
+            if (termsContent) termsContent.style.display = 'none';
+            if (returnContent) returnContent.style.display = 'none';
+
+            if (tabId === 'privacy' && privacyContent) privacyContent.style.display = 'block';
+            else if (tabId === 'terms' && termsContent) termsContent.style.display = 'block';
+            else if (tabId === 'return' && returnContent) returnContent.style.display = 'block';
+
+            tabBtns.forEach(btn => {
+                if (btn.dataset.tab === tabId) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            setTimeout(() => {
+                if (typeof AOS !== 'undefined') AOS.refresh();
+            }, 100);
+        }
+
+        // Initialize tab based on URL hash
+        if (tabBtns.length > 0) {
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.dataset.tab;
+                    showTab(tabId);
+                    history.pushState(null, null, `#${tabId}`);
+                });
+            });
+
+            const hash = window.location.hash.substring(1);
+            if (hash === 'privacy' || hash === 'terms' || hash === 'return') {
+                showTab(hash);
+            } else {
+                showTab('privacy');
+            }
+        }
+    </script>
+    <script src="auth.js"></script>
+</body>
+
+</html>
